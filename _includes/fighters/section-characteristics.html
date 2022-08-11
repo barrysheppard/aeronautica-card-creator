@@ -15,35 +15,72 @@
                 <label for="fighterName">Fighter Name</label>
                 <input class="form-control" type="text" id="fighterName" name="fighterName" value=" " oninput="onAnyChange()">
             </div>
-            
             <div class="form-group">
                 <label for="fighterName2">Subtitle</label>
                 <input class="form-control" type="text" id="fighterName2" name="fighterName2" value=" " oninput="onAnyChange()">
             </div>
-                        
+            <div class="form-group">
+                <label for="pointCost">Points value</label>
+                <input class="form-control" id="pointCost" min="0" max="9999" name="pointCost" oninput="onAnyChange()" type="number" value="100">
+            </div>
+            
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="movement">Movement</label>
-                        <input class="form-control" id="movement" min="0" max="100" name="movement" oninput="onAnyChange()" type="number" value="4">
+                        <label for="structure">Structure</label>
+                        <input class="form-control" id="structure" min="0" max="100" name="structure" oninput="onAnyChange()" type="number" value="4">
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="toughness">Toughness</label>
-                        <input class="form-control" id="toughness" min="0" max="100" name="toughness" oninput="onAnyChange()" type="number" value="3">
+                        <label for="throttle">Throttle</label>
+                        <input class="form-control" id="throttle" min="0" max="100" name="throttle" oninput="onAnyChange()" type="number" value="3">
                     </div>
                 </div>
-                <div class="col-sm-6">    
+                <div class="col-sm-3">    
                     <div class="form-group">
-                        <label for="numWounds">Wounds</label>
-                        <input class="form-control" id="numWounds" min="1" max="1000" name="numWounds" oninput="onAnyChange()" type="number" value="10">
+                        <label for="minSpeed">Min Speed</label>
+                        <input class="form-control" id="minSpeed" min="1" max="1000" name="minSpeed" oninput="onAnyChange()" type="number" value="10">
                     </div>
                 </div>
-                <div class="col-sm-6">
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="pointCost">Points value</label>
-                        <input class="form-control" id="pointCost" min="0" max="9999" name="pointCost" oninput="onAnyChange()" type="number" value="100">
+                        <label for="transport">Transport</label>
+                        <input class="form-control" id="transport" min="0" max="100" name="transport" oninput="onAnyChange()" type="number" value="4">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="aceManoeuvres">Ace Manoeuvres</label>
+                        <input class="form-control" id="aceManoeuvres" min="0" max="100" name="aceManoeuvres" oninput="onAnyChange()" type="number" value="3">
+                    </div>
+                </div>
+                <div class="col-sm-3">    
+                    <div class="form-group">
+                        <label for="maxSpeed">Max Speed</label>
+                        <input class="form-control" id="maxSpeed" min="1" max="1000" name="maxSpeed" oninput="onAnyChange()" type="number" value="10">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="fuel">Fuel</label>
+                        <input class="form-control" id="fuel" min="0" max="100" name="fuel" oninput="onAnyChange()" type="number" value="4">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="handling">Handling</label>
+                        <input class="form-control" id="handling" min="0" max="100" name="handling" oninput="onAnyChange()" type="number" value="3">
+                    </div>
+                </div>
+                <div class="col-sm-3">    
+                    <div class="form-group">
+                        <label for="maxAltitude">Max Altitude</label>
+                        <input class="form-control" id="maxAltitude" min="1" max="1000" name="maxAltitude" oninput="onAnyChange()" type="number" value="10">
                     </div>
                 </div>
             </div>
