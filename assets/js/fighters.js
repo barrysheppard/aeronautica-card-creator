@@ -130,7 +130,6 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
     var size = scalePixelPosition({x: 120, y: 120});
-    drawImageSrc(position, size, weaponData.runemark);
 }
 
 function getWeapon(weaponId) {
@@ -153,73 +152,6 @@ function getLabel(element)
 function getImage(element)
 {
     return $(element).find("img")[0];
-}
-
-function getSelectedRunemark(radioDiv) {
-    var checked = $(radioDiv).find('input:checked');
-    if (checked.length > 0)
-    {
-        return getImage(getLabel(checked[0])).getAttribute("src");
-    }
-    return null;
-}
-
-function setSelectedRunemark(radioDiv, runemark, radioGroupName, bgColor)
-{
-    // uncheck all
-    {
-        var checked = $(radioDiv).find('input:checked');
-        for (var i = 0; i < checked.length; i++)
-        {
-            checked[i].checked = false;
-        }
-        var icons = $(radioDiv).find('img');
-        for (var i = 0; i < icons.length; i++)
-        {
-            icons[i].style.backgroundColor = bgColor;
-        }
-    }
-
-    if (runemark != null)
-    {
-        var queryString = "img[src='"+ runemark +"']";
-        var img = $(radioDiv).find(queryString);
-        if (img.length > 0)
-        {
-            var radioButton = $(img[0].parentNode.parentNode).find("input")[0];
-            radioButton.checked = true;
-            // img[0].style.backgroundColor = "tomato";
-            img[0].style.backgroundColor = "#00bc8c";
-        }
-        else
-        {
-            var newDiv =
-                addToImageRadioSelector(
-                    runemark,
-                    radioDiv,
-                    radioGroupName,
-                    bgColor);
-            // $(newDiv).find("img")[0].style.backgroundColor = "tomato";
-            $(newDiv).find("img")[0].style.backgroundColor = "#00bc8c";
-            $(newDiv).find("input")[0].checked = true;
-        }
-    }
-}
-
-function getSelectedFactionRunemark() {
-    return getSelectedRunemark($('#factionRunemarkSelect')[0]);
-}
-
-function setSelectedFactionRunemark(runemark) {
-    setSelectedRunemark($('#factionRunemarkSelect')[0], runemark, "faction", "black");
-}
-
-function getSelectedSubfactionRunemark() {
-    return getSelectedRunemark($('#subfactionRunemarkSelect')[0]);
-}
-
-function setSelectedSubfactionRunemark(runemark) {
-    setSelectedRunemark($('#subfactionRunemarkSelect')[0], runemark, "subfaction", "black");
 }
 
 function drawImage(scaledPosition, scaledSize, image)
@@ -245,21 +177,6 @@ function drawImageSrc(scaledPosition, scaledSize, imageSrc)
         image.onload = function(){ drawImage(scaledPosition, scaledSize, image); };
         image.src = imageSrc;
     }
-}
-
-function drawTagRunemark(index, runemark) {
-    var positions = [{x: 575, y: 545}, {x: 750, y: 545}, {x: 662.5, y: 395}, {x: 662.5, y: 690}];
-    if (index >= positions.length) return;
-
-    var img = $("#circle")[0];
-
-    var position = scalePixelPosition(positions[index]);
-    var size = scalePixelPosition({x: 160, y: 160});
-    getContext().drawImage(img, position.x, position.y, size.x, size.y);
-
-    position = scalePixelPosition({x: positions[index].x + 15, y: positions[index].y + 15});
-    size = scalePixelPosition({x: 130, y: 130});
-    drawImageSrc(position, size, runemark);
 }
 
 function drawModel(imageUrl, imageProps)
@@ -354,7 +271,6 @@ function getDefaultWeaponData()
     weaponData.strength = 3;
     weaponData.damageBase = 1;
     weaponData.damageCrit = 2;
-    weaponData.runemark = null;
     return weaponData;
 }
 
@@ -383,7 +299,6 @@ function readWeaponControls(weaponId)
     weaponData.strength = weaponDiv.find("#strength")[0].value;
     weaponData.damageBase = weaponDiv.find("#damageBase")[0].value;
     weaponData.damageCrit = weaponDiv.find("#damageCrit")[0].value;
-    weaponData.runemark = getSelectedRunemark(weaponDiv.find("#weaponRunemarkSelect")[0]);
     return weaponData;
 }
 
@@ -398,66 +313,8 @@ function writeWeaponControls(weaponId, weaponData, weaponName)
     weaponDiv.find("#strength")[0].value = weaponData.strength;
     weaponDiv.find("#damageBase")[0].value = weaponData.damageBase;
     weaponDiv.find("#damageCrit")[0].value = weaponData.damageCrit;
-    setSelectedRunemark(
-        weaponDiv.find("#weaponRunemarkSelect")[0],
-        weaponData.runemark,
-        weaponName,
-        "white");
 }
 
-function readTagRunemarks()
-{
-    var array = new Array;
-    var checkedBoxes = $("#tagRunemarkSelect").find('input:checked');
-    for (i = 0; i < checkedBoxes.length; i++)
-    {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-
-function setSelectedTagRunemarks(selectedRunemarksArray)
-{
-    var tagRunemarksDiv = $("#tagRunemarkSelect");
-    // uncheck all
-    {
-        var checked = tagRunemarksDiv.find('input:checked');
-        for (var i = 0; i < checked.length; i++)
-        {
-            checked[i].checked = false;
-        }
-        var icons = tagRunemarksDiv.find('img');
-        for (var i = 0; i < icons.length; i++)
-        {
-            icons[i].style.backgroundColor = "white";
-        }
-    }
-
-    for (var i = 0; i < selectedRunemarksArray.length; i++)
-    {
-        var runemark = selectedRunemarksArray[i];
-        var queryString = "img[src='"+ runemark +"']";
-        var imgs = tagRunemarksDiv.find(queryString);
-        if (imgs.length > 0)
-        {
-            var checkbox = $(imgs[0].parentNode.parentNode).find("input")[0];
-            checkbox.checked = true;
-            // imgs[0].style.backgroundColor = "tomato";
-            imgs[0].style.backgroundColor = "#00bc8c";
-        }
-        else
-        {
-            var newDiv =
-                addToImageCheckboxSelector(
-                    runemark,
-                    tagRunemarksDiv[0],
-                    "white");
-            // $(newDiv).find("img")[0].style.backgroundColor = "tomato";
-            $(newDiv).find("img")[0].style.backgroundColor = "#00bc8c";
-            $(newDiv).find("input")[0].checked = true;
-        }
-    }
-}
 
 function readControls()
 {
@@ -465,33 +322,19 @@ function readControls()
     data.name = getName();
     data.imageUrl = getModelImage();
     data.imageProperties = getModelImageProperties();
-    data.factionRunemark = getSelectedFactionRunemark();
-    data.subfactionRunemark = getSelectedSubfactionRunemark();
     data.fighterName = document.getElementById("fighterName").value;
     data.fighterName2 = document.getElementById("fighterName2").value;
     data.toughness = document.getElementById("toughness").value;
     data.wounds = document.getElementById("numWounds").value;
     data.move = document.getElementById("movement").value;
     data.pointCost = document.getElementById("pointCost").value;
-    data.tagRunemarks = readTagRunemarks();
     data.weapon1 = readWeaponControls("#weapon1");
     data.weapon2 = readWeaponControls("#weapon2");
 
     return data;
 }
 
-function drawFactionRunemark(image)
-{
-    var position = scalePixelPosition({x: 67.5, y: 67.5});
-    var size = scalePixelPosition({x: 190, y: 190});
-    drawImageSrc(position, size, image);
-}
-function drawSubfactionRunemark(image)
-{
-    var position = scalePixelPosition({x: 267.5, y: 27.5});
-    var size = scalePixelPosition({x: 120, y: 120});
-    drawImageSrc(position, size, image);
-}
+
 render = function(fighterData) {
     drawBackground();
 
@@ -523,8 +366,6 @@ render = function(fighterData) {
     
     // section added above
     
-    drawFactionRunemark(fighterData.factionRunemark);
-    drawSubfactionRunemark(fighterData.subfactionRunemark);
 
     getContext().font = "92px rodchenkoctt";
     getContext().fillStyle = "white";
@@ -550,9 +391,6 @@ render = function(fighterData) {
     getContext().textAlign = "left";
     getContext().fillStyle = "black";
     
-    // moved up
-    //drawFighterName(fighterData.fighterName);
-    //drawFighterName2(fighterData.fighterName2);
 
     if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
     {
@@ -567,10 +405,6 @@ render = function(fighterData) {
     {
         drawWeapon(fighterData.weapon2, {x: 50, y: 850}); // Default was x:29, y:463
     }
-    for (i = 0; i < fighterData.tagRunemarks.length; i++)
-    {
-        drawTagRunemark(i, fighterData.tagRunemarks[i]);
-    }
 }
 
 function writeControls(fighterData)
@@ -578,15 +412,12 @@ function writeControls(fighterData)
     setName(fighterData.name);
     setModelImage(fighterData.imageUrl);
     setModelImageProperties(fighterData.imageProperties);
-    setSelectedFactionRunemark(fighterData.factionRunemark);
-    setSelectedSubfactionRunemark(fighterData.subfactionRunemark);
     $("#fighterName")[0].value = fighterData.fighterName;
     $("#fighterName2")[0].value = fighterData.fighterName2;
     $("#toughness")[0].value = fighterData.toughness;
     $("#numWounds")[0].value = fighterData.wounds;
     $("#movement")[0].value = fighterData.move;
     $("#pointCost")[0].value = fighterData.pointCost;
-    setSelectedTagRunemarks(fighterData.tagRunemarks);
     writeWeaponControls("#weapon1", fighterData.weapon1, "weapon1");
     writeWeaponControls("#weapon2", fighterData.weapon2, "weapon2");
 }
@@ -596,15 +427,12 @@ function defaultFighterData() {
     fighterData.name = 'Default';
     fighterData.imageUrl = null;
     fighterData.imageProperties = getDefaultModelImageProperties();
-    fighterData.factionRunemark = 'runemarks/white/factions-chaos-iron-golems.svg';
     fighterData.fighterName = "Name";
     fighterData.fighterName2 = "subtitle";
     fighterData.toughness = 4;
     fighterData.wounds = 15;
     fighterData.move = 5;
     fighterData.pointCost = 125;
-    fighterData.tagRunemarks = new Array;
-    fighterData.tagRunemarks.push('runemarks/black/fighters-berserker.svg');
     fighterData.weapon1 = getDefaultWeaponData1();
     fighterData.weapon2 = getDefaultWeaponData2();
     return fighterData;
@@ -737,14 +565,6 @@ async function saveFighterData(fighterData)
     {
         // handle images we may have loaded from disk...
         fighterData.imageUrl = await handleImageUrlFromDisk(fighterData.imageUrl);
-        fighterData.factionRunemark = await handleImageUrlFromDisk(fighterData.factionRunemark);
-        fighterData.subfactionRunemark = await handleImageUrlFromDisk(fighterData.subfactionRunemark);
-        for (i = 0; i < fighterData.tagRunemarks.length; i++)
-        {
-            fighterData.tagRunemarks[i] = await handleImageUrlFromDisk(fighterData.tagRunemarks[i]);
-        }
-        fighterData.weapon1.runemark = await handleImageUrlFromDisk(fighterData.weapon1.runemark);
-        fighterData.weapon2.runemark = await handleImageUrlFromDisk(fighterData.weapon2.runemark);
 
         finishSaving();
     }
@@ -788,98 +608,6 @@ onWeaponMaxRangeChanged = function(maxRange) {
     minRange.value = Math.min(maxRange.value, minRange.value);
 
     onAnyChange();
-}
-
-onRunemarkSelectionChanged = function(radioButton, backgroundColor)
-{
-    var radioSection = radioButton.parentNode.parentNode;
-    var allRadioButtons = $('input', radioSection);
-    for (i = 0; i < allRadioButtons.length; i++)
-    {
-        getImage(getLabel(allRadioButtons[i])).style.backgroundColor = backgroundColor;
-    }
-
-    // getImage(getLabel(radioButton)).style.backgroundColor = "tomato";
-    getImage(getLabel(radioButton)).style.backgroundColor = "#00bc8c";
-
-    onAnyChange();
-}
-
-onTagRunemarkSelectionChanged = function(checkbox, backgroundColor)
-{
-    // getImage(getLabel(checkbox)).style.backgroundColor = checkbox.checked ? "tomato" : backgroundColor;
-    getImage(getLabel(checkbox)).style.backgroundColor = checkbox.checked ? "#00bc8c" : backgroundColor;
-
-    onAnyChange();
-}
-
-addToImageRadioSelector = function(imageSrc, imageSelector, radioGroupName, bgColor)
-{
-    var div = document.createElement('div');
-    div.setAttribute('class', 'mr-0');
-    div.innerHTML = `
-        <label for="${ radioGroupName }-${ imageSrc }"><img src="${ imageSrc }" width="50" height="50" alt="" style="background-color:${ bgColor };"></label>
-        <input type="radio" style="display:none;" name="${ radioGroupName }" id="${ radioGroupName }-${ imageSrc }" onchange="onRunemarkSelectionChanged(this, '${ bgColor }')">
-    `;
-    imageSelector.appendChild(div);
-    return div;
-}
-
-onFactionRunemarkFileSelect = function()
-{
-    var imageSelect = $("#additionalFactionMarkSelect")[0];
-    var selectGrid = $("#factionRunemarkSelect")[0];
-
-    for (i = 0; i < imageSelect.files.length; i++)
-    {
-        addToImageRadioSelector(URL.createObjectURL(imageSelect.files[i]), selectGrid, "faction", "black");
-    }
-}
-
-onSubfactionRunemarkFileSelect = function()
-{
-    var imageSelect = $("#additionalSubfactionMarkSelect")[0];
-    var selectGrid = $("#subfactionRunemarkSelect")[0];
-
-    for (i = 0; i < imageSelect.files.length; i++)
-    {
-        addToImageRadioSelector(URL.createObjectURL(imageSelect.files[i]), selectGrid, "subfaction", "black");
-    }
-}
-
-onWeaponRunemarkFileSelect = function(input, weaponName)
-{
-    var grid = $(input.parentNode).find("#weaponRunemarkSelect")[0];
-
-    for (i = 0; i < input.files.length; i++)
-    {
-        addToImageRadioSelector(URL.createObjectURL(input.files[i]), grid, weaponName, "white");
-    }
-}
-
-function addToImageCheckboxSelector(imgSrc, grid, bgColor)
-{
-    var div = document.createElement('div');
-    div.setAttribute('class', 'mr-0');
-    div.innerHTML = `
-    <label for="checkbox-${ imgSrc }">
-        <img src="${ imgSrc }" width="50" height="50" alt="" style="background-color:${ bgColor };">
-    </label>
-    <input type="checkbox" style="display:none;" id="checkbox-${ imgSrc }" onchange="onTagRunemarkSelectionChanged(this, '${ bgColor }')">
-    `;
-    grid.appendChild(div);
-    return div;
-}
-
-function onTagRunemarkFileSelect()
-{
-    var imageSelect = $("#additionalTagMarkSelect")[0];
-    var selectGrid = $("#tagRunemarkSelect")[0];
-
-    for (i = 0; i < imageSelect.files.length; i++)
-    {
-        addToImageCheckboxSelector(URL.createObjectURL(imageSelect.files[i]), selectGrid, "white");
-    }
 }
 
 function onClearCache()
