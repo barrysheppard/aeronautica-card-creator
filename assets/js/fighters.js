@@ -57,19 +57,21 @@ drawCardElementFromInputId = function(inputId, pixelPosition) {
     drawCardElementFromInput(document.getElementById(inputId), pixelPosition);
 }
 
+// Variables to draw
+// FighterName, FighterName2, Points, Structure, Transport, Fuel, Throttle, AceManoveuvres, Handing, MinSpeed, MaxSpeed, MaxAltitude
 
 drawFighterName = function(value) {
     getContext().font = '70px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
-    writeScaled(value, {x: 10, y: 10});
+    writeScaled(value, {x: 30, y: 20});
 }
 
 drawFighterName2 = function(value) {
-    getContext().font = '20px rodchenkoctt';
+    getContext().font = '32px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
-    writeScaled(value, {x: 10, y: 55});
+    writeScaled(value, {x: 30, y: 70});
 }
 
 drawToughness = function(value) {
@@ -86,8 +88,11 @@ drawMove = function(value) {
 
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
-    writeScaled(value, {x: 1200, y: 160});
+    writeScaled(value, {x: 1400, y: 140});
 }
+
+
+// Weapon Stats
 
 getWeaponStatblockImage = function() {
     return document.getElementById("weapon-profile");
@@ -143,6 +148,9 @@ function getWeapon1() {
 function getWeapon2() {
     return getWeapon("#weapon2");
 }
+
+// End Weapons
+
 
 function getLabel(element)
 {
