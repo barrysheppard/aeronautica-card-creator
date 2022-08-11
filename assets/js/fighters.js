@@ -27,32 +27,8 @@ getBackgroundImage = function() {
     if (document.getElementById('select-bg-dark-102').checked) {
         return document.getElementById('bg-dark-102');
 
-    } else if (document.getElementById('select-bg-dark-112').checked) {
-        return document.getElementById('bg-dark-112');
-
-    } else if (document.getElementById('select-bg-dark-302').checked) {
-        return document.getElementById('bg-dark-302');
-
-    } else if (document.getElementById('select-bg-dark-312').checked) {
-        return document.getElementById('bg-dark-312');
-
-    } else if (document.getElementById('select-bg-fire-102').checked) {
-        return document.getElementById('bg-fire-102');
-
-    } else if (document.getElementById('select-bg-fire-112').checked) {
-        return document.getElementById('bg-fire-112');
-        
-    } else if (document.getElementById('select-bg-ghur-401').checked) {
-        return document.getElementById('bg-ghur-401');
-    
-    } else if (document.getElementById('select-bg-ghur-402').checked) {
-        return document.getElementById('bg-ghur-402');
-        
-    } else if (document.getElementById('select-bg-ghur-403').checked) {
-        return document.getElementById('bg-ghur-403');
-    
-    } else if (document.getElementById('select-bg-ghur-404').checked) {
-        return document.getElementById('bg-ghur-404');
+    } else if (document.getElementById('aeronautica_card_imperial').checked) {
+        return document.getElementById('aeronautica_card_imperial');
     }
 }
 
