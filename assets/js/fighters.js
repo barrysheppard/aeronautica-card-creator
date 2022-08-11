@@ -74,15 +74,39 @@ drawFighterName2 = function(value) {
     writeScaled(value, {x: 30, y: 70});
 }
 
-drawToughness = function(value) {
+drawStructure = function(value) {
     writeScaled(value, {x: 545, y: 391});
 }
 
-drawWounds = function(value) {
+drawTransport = function(value) {
     writeScaled(value, {x: 380, y: 510});
 }
 
-drawMove = function(value) {
+drawFuel = function(value) {
+    writeScaled(value, {x: 220, y: 391});
+}
+
+drawThrottle = function(value) {
+    writeScaled(value, {x: 545, y: 391});
+}
+
+drawAceManoeuvres = function(value) {
+    writeScaled(value, {x: 380, y: 510});
+}
+
+drawHandling = function(value) {
+    writeScaled(value, {x: 220, y: 391});
+}
+
+drawMinSpeed = function(value) {
+    writeScaled(value, {x: 545, y: 391});
+}
+
+drawMaxSpeed = function(value) {
+    writeScaled(value, {x: 380, y: 510});
+}
+
+drawMaxAltitude = function(value) {
     writeScaled(value, {x: 220, y: 391});
 }
 
@@ -332,9 +356,18 @@ function readControls()
     data.imageProperties = getModelImageProperties();
     data.fighterName = document.getElementById("fighterName").value;
     data.fighterName2 = document.getElementById("fighterName2").value;
-    data.toughness = document.getElementById("toughness").value;
-    data.wounds = document.getElementById("numWounds").value;
-    data.move = document.getElementById("movement").value;
+    data.structure = document.getElementById("structure").value;
+    data.transport = document.getElementById("transport").value;
+    data.fuel = document.getElementById("fuel").value;
+    data.throttle = document.getElementById("throttle").value;
+    data.aceManoeuvres = document.getElementById("aceManoeuvres").value;
+    data.handling = document.getElementById("handling").value;
+    data.minSpeed = document.getElementById("minSpeed").value;
+    data.maxSpeed = document.getElementById("maxSpeed").value;
+    data.maxAltitude = document.getElementById("maxAltitude").value;
+
+    
+    
     data.pointCost = document.getElementById("pointCost").value;
     data.weapon1 = readWeaponControls("#weapon1");
     data.weapon2 = readWeaponControls("#weapon2");
@@ -375,23 +408,22 @@ render = function(fighterData) {
     // section added above
     
 
-    getContext().font = "92px rodchenkoctt";
-    getContext().fillStyle = "white";
-
+    getContext().font = "20px rodchenkoctt";
+    getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
 
-    drawMove(fighterData.move);
-    drawWounds(fighterData.wounds);
-
-    getContext().textBaseline = "middle";
-    getContext().textAlign = "right";
-
-    drawToughness(fighterData.toughness);
-
-    getContext().textBaseline = "middle";
-    getContext().textAlign = "center";
-
+    drawStructure(data.structure);
+    drawTransport(data.transport);
+    drawFuel(data.fuel);
+    drawThrottle(data.throttle);
+    drawAceManoeuvres(data.aceManoeuvres);
+    drawHandling(data.handling);
+    drawMinSpeed(data.minSpeed);
+    drawMaxSpeed(data.maxSpeed);
+    drawMaxAltitude(data.maxAltitude);    
+    
+    
     drawPointCost(fighterData.pointCost);
 
     getContext().font = "70px rodchenkoctt";
@@ -422,9 +454,15 @@ function writeControls(fighterData)
     setModelImageProperties(fighterData.imageProperties);
     $("#fighterName")[0].value = fighterData.fighterName;
     $("#fighterName2")[0].value = fighterData.fighterName2;
-    $("#toughness")[0].value = fighterData.toughness;
-    $("#numWounds")[0].value = fighterData.wounds;
-    $("#movement")[0].value = fighterData.move;
+    $("#structure")[0].value = fighterData.structure;
+    $("#transport")[0].value = fighterData.transport;
+    $("#fuel")[0].value = fighterData.fuel;
+    $("#throttle")[0].value = fighterData.throttle;
+    $("#aceManoeuvres")[0].value = fighterData.aceManoeuvres;
+    $("#handling")[0].value = fighterData.handling;
+    $("#minSpeed")[0].value = fighterData.minSpeed;
+    $("#maxSpeed")[0].value = fighterData.maxSpeed;
+    $("#maxAltitude")[0].value = fighterData.maxAltitude;
     $("#pointCost")[0].value = fighterData.pointCost;
     writeWeaponControls("#weapon1", fighterData.weapon1, "weapon1");
     writeWeaponControls("#weapon2", fighterData.weapon2, "weapon2");
@@ -437,9 +475,18 @@ function defaultFighterData() {
     fighterData.imageProperties = getDefaultModelImageProperties();
     fighterData.fighterName = "Name";
     fighterData.fighterName2 = "subtitle";
-    fighterData.toughness = 4;
-    fighterData.wounds = 15;
-    fighterData.move = 5;
+    
+    fighterData.structure = 0;
+    fighterData.transport = 0;
+    fighterData.fuel = 0;
+    fighterData.throttle = 0;
+    fighterData.aceManoeuvres = 0;
+    fighterData.handling = 0;
+    fighterData.minSpeed = 0;
+    fighterData.maxSpeed = 0;
+    fighterData.maxAltitude = 0;
+    
+    
     fighterData.pointCost = 125;
     fighterData.weapon1 = getDefaultWeaponData1();
     fighterData.weapon2 = getDefaultWeaponData2();
@@ -692,7 +739,7 @@ function onDeleteClicked()
 function saveCardAsImage() {
     var element = document.createElement('a');
     element.setAttribute('href', document.getElementById('canvas').toDataURL('image/png'));
-    element.setAttribute('download', 'warcry-fighter-card.png');
+    element.setAttribute('download', 'aeronautica-card.png');
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
