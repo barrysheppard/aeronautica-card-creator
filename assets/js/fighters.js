@@ -27,7 +27,7 @@ getBackgroundImage = function() {
     if (document.getElementById('select-bg-dark-102').checked) {
         return document.getElementById('bg-dark-102');
 
-    } else if (document.getElementById('aeronautica_card_imperial').checked) {
+    } else if (document.getElementById('select-aeronautica_card_imperial').checked) {
         return document.getElementById('aeronautica_card_imperial');
     }
 }
