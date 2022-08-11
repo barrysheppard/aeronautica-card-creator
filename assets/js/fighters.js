@@ -60,16 +60,16 @@ drawCardElementFromInputId = function(inputId, pixelPosition) {
 
 drawFighterName = function(value) {
     getContext().font = '70px rodchenkoctt';
-    getContext().fillStyle = 'black';
-    getContext().textAlign = "center";
-    writeScaled(value, {x: 1350, y: 1100});
+    getContext().fillStyle = 'white';
+    getContext().textAlign = "left";
+    writeScaled(value, {x: 10, y: 10});
 }
 
 drawFighterName2 = function(value) {
-    getContext().font = '50px rodchenkoctt';
-    getContext().fillStyle = 'black';
-    getContext().textAlign = "center";
-    writeScaled(value, {x: 1350, y: 1155});
+    getContext().font = '20px rodchenkoctt';
+    getContext().fillStyle = 'white';
+    getContext().textAlign = "left";
+    writeScaled(value, {x: 10, y: 55});
 }
 
 drawToughness = function(value) {
@@ -85,7 +85,8 @@ drawMove = function(value) {
 }
 
 drawPointCost = function(value) {
-    writeScaled(value, {x: 805, y: 160});
+    getContext().fillStyle = 'black';
+    writeScaled(value, {x: 1200, y: 160});
 }
 
 getWeaponStatblockImage = function() {
