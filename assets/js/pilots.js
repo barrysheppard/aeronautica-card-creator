@@ -165,7 +165,7 @@ function drawModel(imageUrl, imageProps)
     {
         var image = new Image();
         image.onload = function(){
-            var position = scalePixelPosition({x: 590 + imageProps.offsetX, y: imageProps.offsetY});
+            var position = scalePixelPosition({x: imageProps.offsetX, y: imageProps.offsetY});
             var scale = imageProps.scalePercent/100.0;
             var width = image.width * scale;
             var height = image.height * scale;
