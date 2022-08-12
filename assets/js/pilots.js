@@ -262,7 +262,24 @@ function readControls()
 
 render = function(cardData) {
     drawBackground();
-    drawModel(cardData.imageUrl, cardData.imageProperties);
+
+        if (data.imageUrl != null)
+    {
+        var image = new Image();
+        image.onload = function(){
+            var position = scalePixelPosition({x: 590 + data.imageProperties.offsetX, y: data.imageProperties.offsetY});
+            var scale = data.imageProperties.scalePercent/100.0;
+            var width = image.width * scale;
+            var height = image.height * scale;
+            getContext().drawImage(image, position.x, position.y, width, height);
+
+            // These are the texts to overlay
+
+            URL.revokeObjectURL(image.src);
+        };
+        image.src = data.imageUrl;
+    }
+	
 
     drawPilotTitle(cardData.pilotTitle);
     drawPilotName(cardData.pilotName);
