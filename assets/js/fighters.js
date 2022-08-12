@@ -208,6 +208,14 @@ function getWeapon2() {
     return getWeapon("#weapon2");
 }
 
+function getWeapon3() {
+    return getWeapon("#weapon3");
+}
+
+function getWeapon4() {
+    return getWeapon("#weapon4");
+}
+
 // End Weapons
 
 
@@ -361,7 +369,7 @@ function getDefaultWeaponData2()
 function getDefaultWeaponData3()
 {
     var data = getDefaultWeaponData();
-    data.enabled = true;
+    data.enabled = false;
     return data;
 }
 
