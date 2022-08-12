@@ -96,28 +96,28 @@ drawFuel = function(value) {
 }
 
 drawThrottle = function(value) {
-    writeScaled(value, {x: 1080, y: 670});
+    writeScaled(value, {x: 1075, y: 670});
 }
 
 drawAceManoeuvres = function(value) {
-    writeScaled(value, {x: 1080, y: 720});
+    writeScaled(value, {x: 1075, y: 720});
 }
 
 drawHandling = function(value) {
     value = value + "+";
-    writeScaled(value, {x: 1080, y: 770});
+    writeScaled(value, {x: 1075, y: 770});
 }
 
 drawMinSpeed = function(value) {
-    writeScaled(value, {x: 1580, y: 670});
+    writeScaled(value, {x: 1575, y: 670});
 }
 
 drawMaxSpeed = function(value) {
-    writeScaled(value, {x: 1580, y: 720});
+    writeScaled(value, {x: 1575, y: 720});
 }
 
 drawMaxAltitude = function(value) {
-    writeScaled(value, {x: 1580, y: 770});
+    writeScaled(value, {x: 1575, y: 770});
 }
 
 drawPointCost = function(value) {
@@ -140,15 +140,15 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     writeScaled(
         weaponData.fireArc,
-        {x: pixelPosition.x + 435, y: statsPosY});
+        {x: pixelPosition.x + 438, y: statsPosY});
 
     writeScaled(
         weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong,
-        {x: pixelPosition.x + 735, y: statsPosY});
+        {x: pixelPosition.x + 730, y: statsPosY});
 
     writeScaled(
         weaponData.damage + "+",
-        {x: pixelPosition.x + 900, y: statsPosY});    
+        {x: pixelPosition.x + 880, y: statsPosY});    
 
     writeScaled(
         weaponData.ammo,
@@ -418,7 +418,7 @@ render = function(fighterData) {
     getContext().font = '40px helvetica bold';
     getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
-    getContext().textAlign = "left";
+    getContext().textAlign = "center";
 
     
     drawTransport(fighterData.transport);
