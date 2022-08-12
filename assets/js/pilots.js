@@ -59,21 +59,21 @@ drawPilotTitle = function(value) {
     getContext().font = '12px rodchenkoctt';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 0, y: 0});
+    writeScaled(value, {x: 10, y: 50});
 }
 
 drawPilotName = function(value) {
     getContext().font = '12px rodchenkoctt';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 10, y: 10});
+    writeScaled(value, {x: 10, y: 60});
 }
 
 drawPilotText = function(value) {
     getContext().font = '12px rodchenkoctt';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 20, y: 20});
+    writeScaled(value, {x: 10, y: 70});
 }
 
 function getLabel(element)
