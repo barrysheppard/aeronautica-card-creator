@@ -133,26 +133,33 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     var statsPosY = pixelPosition.y + 95;
 
-    var range = (weaponData.rangeMin > 0 ? (weaponData.rangeMin + "-") : "") + weaponData.rangeMax;
-
-    getContext().textAlign = "center";
-
-    writeScaled(range, {x: pixelPosition.x + 250, y: statsPosY});
-
     writeScaled(
-        weaponData.attacks,
+        weaponData.weaponName,
         {x: pixelPosition.x + 440, y: statsPosY});
 
     writeScaled(
-        weaponData.strength,
+        weaponData.fireArc,
         {x: pixelPosition.x + 620, y: statsPosY});
 
     writeScaled(
-        weaponData.damageBase + "/" + weaponData.damageCrit,
+        weaponData.fbrShort + "/" + weaponData.fbrMed + "/" + weaponData.fbrLong,
         {x: pixelPosition.x + 790, y: statsPosY});
 
-    var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
-    var size = scalePixelPosition({x: 120, y: 120});
+    writeScaled(
+        weaponData.damage,
+        {x: pixelPosition.x + 900, y: statsPosY});    
+
+    writeScaled(
+        weaponData.ammo,
+        {x: pixelPosition.x + 950, y: statsPosY});    
+    
+    writeScaled(
+        weaponData.special,
+        {x: pixelPosition.x + 1000, y: statsPosY});    
+        
+   
+    //var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
+    //var size = scalePixelPosition({x: 120, y: 120});
 }
 
 function getWeapon(weaponId) {
