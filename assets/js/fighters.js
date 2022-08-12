@@ -140,15 +140,15 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     writeScaled(
         weaponData.fireArc,
-        {x: pixelPosition.x + 420, y: statsPosY});
+        {x: pixelPosition.x + 430, y: statsPosY});
 
     writeScaled(
         weaponData.fbrShort + "/" + weaponData.fbrMed + "/" + weaponData.fbrLong,
-        {x: pixelPosition.x + 750, y: statsPosY});
+        {x: pixelPosition.x + 740, y: statsPosY});
 
     writeScaled(
         weaponData.damage + "+",
-        {x: pixelPosition.x + 950, y: statsPosY});    
+        {x: pixelPosition.x + 900, y: statsPosY});    
 
     writeScaled(
         weaponData.ammo,
