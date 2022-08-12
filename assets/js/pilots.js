@@ -189,6 +189,61 @@ function setName(name)
     textInput.value = name;
 }
 
+function getModelImage()
+{
+    var imageSelect = $("#imageSelect")[0];
+
+    if (imageSelect.files.length > 0)
+    {
+        return URL.createObjectURL(imageSelect.files[0]);
+    }
+
+    return null;
+}
+
+
+
+
+function setModelImage(image)
+{
+    var imageSelect = $("#imageSelect")[0];
+
+    if (image != null)
+    {
+        // TODO: Not sure how to do this. It might not even be possible! Leave it for now...
+        // imageSelect.files[0] = image;
+    }
+    else
+    {
+        imageSelect.value = null;
+    }
+}
+
+function getDefaultModelImageProperties()
+{
+    return {
+        offsetX: 0,
+        offsetY: 0,
+        scalePercent: 100
+    };
+}
+
+function getModelImageProperties()
+{
+    return {
+        offsetX: $("#imageOffsetX")[0].valueAsNumber,
+        offsetY: $("#imageOffsetY")[0].valueAsNumber,
+        scalePercent: $("#imageScalePercent")[0].valueAsNumber
+    };
+}
+
+function setModelImageProperties(modelImageProperties)
+{
+    $("#imageOffsetX")[0].value = modelImageProperties.offsetX;
+    $("#imageOffsetY")[0].value = modelImageProperties.offsetY;
+    $("#imageScalePercent")[0].value = modelImageProperties.scalePercent;
+}
+
 
 function readControls()
 {
