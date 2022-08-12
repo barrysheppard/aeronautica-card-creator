@@ -263,12 +263,12 @@ function readControls()
 render = function(cardData) {
     drawBackground();
 
-        if (data.imageUrl != null)
+        if (cardData.imageUrl != null)
     {
         var image = new Image();
         image.onload = function(){
-            var position = scalePixelPosition({x: 590 + data.imageProperties.offsetX, y: data.imageProperties.offsetY});
-            var scale = data.imageProperties.scalePercent/100.0;
+            var position = scalePixelPosition({x: 590 + cardData.imageProperties.offsetX, y: cardData.imageProperties.offsetY});
+            var scale = cardData.imageProperties.scalePercent/100.0;
             var width = image.width * scale;
             var height = image.height * scale;
             getContext().drawImage(image, position.x, position.y, width, height);
@@ -277,7 +277,7 @@ render = function(cardData) {
 
             URL.revokeObjectURL(image.src);
         };
-        image.src = data.imageUrl;
+        image.src = cardData.imageUrl;
     }
 	
 
