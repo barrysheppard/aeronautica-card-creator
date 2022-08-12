@@ -76,7 +76,6 @@ drawFighterName2 = function(value) {
     writeScaled(value, {x: 100, y: 185});
 }
 
-getContext().font = '40px helvetica';
 
 drawStructure = function(value) {
     writeScaled(value, {x: 580, y: 670});
@@ -416,8 +415,7 @@ render = function(fighterData) {
     // section added above
     
     
-
-    getContext().font = "50px rodchenkoctt";
+    getContext().font = '40px helvetica';
     getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
