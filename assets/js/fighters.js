@@ -291,7 +291,7 @@ function getDefaultWeaponData()
 {
     var weaponData = new Object;
     weaponData.enabled = true;
-    weaponData.name = " ";
+    weaponData.weaponName = " ";
     weaponData.fireArc = "Front";
     weaponData.fbrShort = 1;
     weaponData.fbrMed = 2;
@@ -321,7 +321,7 @@ function readWeaponControls(weaponId)
     var weaponData = new Object;
     var weaponDiv = $(weaponId);
     weaponData.enabled = weaponDiv.find("#weaponEnabled")[0].checked;    
-    weaponData.name = weaponDiv.find("#name")[0].value;
+    weaponData.weaponName = weaponDiv.find("#weaponName")[0].value;
     weaponData.fireArc = weaponDiv.find("#fireArc")[0].value;
     weaponData.fbrShort = weaponDiv.find("#fbrShort")[0].value;
     weaponData.fbrMed = weaponDiv.find("#fbrMed")[0].value;
@@ -338,7 +338,7 @@ function writeWeaponControls(weaponId, weaponData, weaponName)
     weaponDiv.find("#weaponEnabled")[0].checked = weaponData.enabled;
     weaponDiv.find("#weaponInputs")[0].style.display = weaponData.enabled ? "block" : "none";
         
-    weaponDiv.find("#name")[0].value = weaponData.name;
+    weaponDiv.find("#weaponName")[0].value = weaponData.weaponName;
     weaponDiv.find("#fireArc")[0].value = weaponData.fireArc;
     weaponDiv.find("#fbrShort")[0].value = weaponData.fbrShort;
     weaponDiv.find("#fbrMed")[0].value = weaponData.fbrMed;
