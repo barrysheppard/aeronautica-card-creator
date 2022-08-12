@@ -77,15 +77,15 @@ drawFighterName2 = function(value) {
 }
 
 drawStructure = function(value) {
-    writeScaled(value, {x: 550, y: 680});
+    writeScaled(value, {x: 555, y: 680});
 }
 
 drawTransport = function(value) {
-    writeScaled(value, {x: 380, y: 510});
+    writeScaled(value, {x: 555, y: 700});
 }
 
 drawFuel = function(value) {
-    writeScaled(value, {x: 220, y: 391});
+    writeScaled(value, {x: 555, y: 720});
 }
 
 drawThrottle = function(value) {
