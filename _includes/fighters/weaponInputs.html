@@ -3,16 +3,16 @@
     <input class="form-control" type="text" id="weaponName" name="weaponName" value="Weapon Name" oninput="onAnyChange()">
 </div>
 
-<div class="dropdown">
-  <label for="fireArc">Fire Arc</label>
-  <select id="fireArc" name="fireArc" oninput="onAnyChange()">
-    <option value="Front">Front</option>
-    <option value="Rear">Rear</option>
-</select>
+<div class="col-sm-4 form-group">
+    <label for="fireArc">Fire Arc</label>
+    <select id="fireArc" name="fireArc" oninput="onAnyChange()">
+        <option value="Front">Front</option>
+        <option value="Rear">Rear</option>
+    </select>
 </div>
 
-<div>FPR</div>
-
+<hr class="dotted">
+<b>FPR<b>
 <div class="form-row mt-4">
     <div class="col-sm-4 form-group">
         <label for="fbrShort">Short</label>
@@ -33,15 +33,17 @@
     <label for="damage">Damage</label>
     <input class="form-control" type="number" id="damage" name="damage" min="0" max="999" value="0" oninput="onAnyChange()">
 </div>
-<div class="dropdown">
-  <label for="ammo">Ammo</label>
-  <select id="ammo" name="amoo" oninput="onAnyChange()">
-    <option value="UL">UL</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
+
+<div class="col-sm-4 form-group">
+    <label for="ammo">Ammo</label>
+    <select id="ammo" name="amoo" oninput="onAnyChange()">
+        <option value="UL">UL</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
 </div>
+ 
 <div class="form-group">
     <label for="special">Special</label>
     <input class="form-control" type="text" id="special" name="special" value=" " oninput="onAnyChange()">
