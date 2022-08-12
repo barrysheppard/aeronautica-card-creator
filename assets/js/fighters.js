@@ -81,10 +81,16 @@ drawStructure = function(value) {
 }
 
 drawTransport = function(value) {
+    if value == 0{
+        value = "-";
+    }
     writeScaled(value, {x: 580, y: 720});
 }
 
 drawFuel = function(value) {
+    if value == 0{
+        value = "-";
+    }
     writeScaled(value, {x: 580, y: 770});
 }
 
@@ -97,6 +103,7 @@ drawAceManoeuvres = function(value) {
 }
 
 drawHandling = function(value) {
+    value = value + "+";
     writeScaled(value, {x: 1080, y: 770});
 }
 
@@ -114,8 +121,8 @@ drawMaxAltitude = function(value) {
 
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
-    getContext().textAlign = "middle";
-    writeScaled(value, {x: 1610, y: 85});
+    getContext().textAlign = "centre";
+    writeScaled(value, {x: 1620, y: 85});
 }
 
 
@@ -428,11 +435,11 @@ render = function(fighterData) {
     }
     else if (fighterData.weapon1.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 50, y: 850}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon1, {x: 50, y: 750}); // Default was x:29, y:463
     }
     else if (fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 50, y: 850}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon2, {x: 50, y: 750}); // Default was x:29, y:463
     }
 }
 
