@@ -64,14 +64,14 @@ drawFighterName = function(value) {
     getContext().font = '70px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
-    writeScaled(value, {x: 30, y: 20});
+    writeScaled(value, {x: 100, y: 130});
 }
 
 drawFighterName2 = function(value) {
     getContext().font = '32px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
-    writeScaled(value, {x: 30, y: 70});
+    writeScaled(value, {x: 100, y: 150});
 }
 
 drawStructure = function(value) {
@@ -485,7 +485,6 @@ function defaultFighterData() {
     fighterData.minSpeed = 0;
     fighterData.maxSpeed = 0;
     fighterData.maxAltitude = 0;
-    
     
     fighterData.pointCost = 125;
     fighterData.weapon1 = getDefaultWeaponData1();
