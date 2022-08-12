@@ -167,7 +167,8 @@ drawWeapon = function(weaponData, pixelPosition) {
     if (weaponData.fbrShort == 0 && weaponData.fbrMed == 0 && weaponData.fbrLong == 0) {
         fbr = " ";
     }
-    else { fbr = weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong
+    else { 
+        fbr = weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong;
     }
     writeScaled(
         fbr,
