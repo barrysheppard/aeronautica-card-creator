@@ -81,14 +81,14 @@ drawStructure = function(value) {
 }
 
 drawTransport = function(value) {
-    if value == 0{
+    if (value == 0){
         value = "-";
     }
     writeScaled(value, {x: 580, y: 720});
 }
 
 drawFuel = function(value) {
-    if value == 0{
+    if (value == 0){
         value = "-";
     }
     writeScaled(value, {x: 580, y: 770});
