@@ -76,7 +76,7 @@ drawPilotText = function(value) {
 	
     var lines = value.split('\n');
     for (var i = 0; i < lines.length; i++) {
-        writeScaled(lines[i], {x: 10, y: 170.y+(i*35) } );
+        writeScaled(lines[i], {x: 10, y: 170+(i*35) } );
     }
 }
 
