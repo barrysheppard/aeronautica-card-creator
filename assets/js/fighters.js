@@ -77,39 +77,39 @@ drawFighterName2 = function(value) {
 }
 
 drawStructure = function(value) {
-    writeScaled(value, {x: 580, y: 680});
+    writeScaled(value, {x: 580, y: 670});
 }
 
 drawTransport = function(value) {
-    writeScaled(value, {x: 580, y: 730});
+    writeScaled(value, {x: 580, y: 720});
 }
 
 drawFuel = function(value) {
-    writeScaled(value, {x: 580, y: 780});
+    writeScaled(value, {x: 580, y: 770});
 }
 
 drawThrottle = function(value) {
-    writeScaled(value, {x: 1080, y: 680});
+    writeScaled(value, {x: 1080, y: 670});
 }
 
 drawAceManoeuvres = function(value) {
-    writeScaled(value, {x: 1080, y: 730});
+    writeScaled(value, {x: 1080, y: 720});
 }
 
 drawHandling = function(value) {
-    writeScaled(value, {x: 1080, y: 780});
+    writeScaled(value, {x: 1080, y: 770});
 }
 
 drawMinSpeed = function(value) {
-    writeScaled(value, {x: 1580, y: 680});
+    writeScaled(value, {x: 1580, y: 670});
 }
 
 drawMaxSpeed = function(value) {
-    writeScaled(value, {x: 1580, y: 730});
+    writeScaled(value, {x: 1580, y: 720});
 }
 
 drawMaxAltitude = function(value) {
-    writeScaled(value, {x: 1580, y: 775});
+    writeScaled(value, {x: 1580, y: 770});
 }
 
 drawPointCost = function(value) {
