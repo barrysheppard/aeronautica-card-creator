@@ -166,7 +166,7 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     writeScaled(
         weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong,
-        {x: pixelPosition.x + 725, y: statsPosY});
+        {x: pixelPosition.x + 722, y: statsPosY});
 
     writeScaled(
         weaponData.damage + "+",
@@ -174,7 +174,7 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     writeScaled(
         weaponData.ammo,
-        {x: pixelPosition.x + 1000, y: statsPosY});    
+        {x: pixelPosition.x + 1005, y: statsPosY});    
     
     writeScaled(
         weaponData.special,
@@ -462,7 +462,7 @@ render = function(fighterData) {
    
     drawPointCost(fighterData.pointCost);
 
-    getContext().font = "32px helvetica bold";
+    getContext().font = "36px helvetica bold";
     getContext().textBaseline = "top";
     getContext().textAlign = "left";
     getContext().fillStyle = "black";
