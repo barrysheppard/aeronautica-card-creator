@@ -135,27 +135,27 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     writeScaled(
         weaponData.weaponName,
-        {x: pixelPosition.x + 440, y: statsPosY});
+        {x: pixelPosition.x + 0, y: statsPosY});
 
     writeScaled(
         weaponData.fireArc,
-        {x: pixelPosition.x + 620, y: statsPosY});
+        {x: pixelPosition.x + 200, y: statsPosY});
 
     writeScaled(
         weaponData.fbrShort + "/" + weaponData.fbrMed + "/" + weaponData.fbrLong,
-        {x: pixelPosition.x + 790, y: statsPosY});
+        {x: pixelPosition.x + 300, y: statsPosY});
 
     writeScaled(
         weaponData.damage,
-        {x: pixelPosition.x + 900, y: statsPosY});    
+        {x: pixelPosition.x + 400, y: statsPosY});    
 
     writeScaled(
         weaponData.ammo,
-        {x: pixelPosition.x + 950, y: statsPosY});    
+        {x: pixelPosition.x + 500, y: statsPosY});    
     
     writeScaled(
         weaponData.special,
-        {x: pixelPosition.x + 1000, y: statsPosY});    
+        {x: pixelPosition.x + 600, y: statsPosY});    
         
    
     //var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
@@ -448,16 +448,16 @@ render = function(fighterData) {
     
     if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 20, y: 800}); // Default was x:29, y:397
-        drawWeapon(fighterData.weapon2, {x: 20, y: 850}); // Default was x:29, y:564
+        drawWeapon(fighterData.weapon1, {x: 0, y: 820}); // Default was x:29, y:397
+        drawWeapon(fighterData.weapon2, {x: 0, y: 870}); // Default was x:29, y:564
     }
     else if (fighterData.weapon1.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 20, y: 800}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon1, {x: 0, y: 820}); // Default was x:29, y:463
     }
     else if (fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 20, y: 800}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon2, {x: 0, y: 820}); // Default was x:29, y:463
     }
 }
 
