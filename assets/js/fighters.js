@@ -164,7 +164,7 @@ drawWeapon = function(weaponData, pixelPosition) {
         weaponData.fireArc,
         {x: pixelPosition.x + 450, y: statsPosY});
     
-    if (weaponData.fbrShort == 0 AND weaponData.fbrMed == 0 AND weaponData.fbrLong == 0) {
+    if (weaponData.fbrShort == 0 && weaponData.fbrMed == 0 && weaponData.fbrLong == 0) {
         fbr = " ";
     }
     else { fbr = weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong
