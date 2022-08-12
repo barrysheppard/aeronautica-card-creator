@@ -24,20 +24,10 @@ getContext = function() {
 }
 
 getBackgroundImage = function() {
-    if (document.getElementById('select-bg-dark-102').checked) {
-        return document.getElementById('bg-dark-102');
-
-    } else if (document.getElementById('select-bg-dark-302').checked) {
-        return document.getElementById('bg-dark-302');
-
-    } else if (document.getElementById('select-bg-fire-102').checked) {
-        return document.getElementById('bg-fire-102');
-    
-    } else if (document.getElementById('select-bg-ghur-401').checked) {
-        return document.getElementById('bg-ghur-401');
+    if (document.getElementById('aeronautica_pilot_green').checked) {
+        return document.getElementById('aeronautica_pilot_green');
     }
 	        
-
 }
 
 drawBackground = function() {
@@ -65,162 +55,26 @@ drawCardElementFromInputId = function(inputId, pixelPosition) {
     drawCardElementFromInput(document.getElementById(inputId), pixelPosition);
 }
 
-
-
-drawAbility = function(id, pixelPosition) {
-    getContext().font = '28px Georgia, serif';
-    getContext().fillStyle = 'black';
-    getContext().textAlign = 'left';
-
-    var reaction      = document.getElementById('ability' + id + '-reaction'),
-        double        = document.getElementById('ability' + id + '-double'),
-        triple        = document.getElementById('ability' + id + '-triple'),
-        quad          = document.getElementById('ability' + id + '-quad'),
-        name          = document.getElementById('ability' + id + '-name').value,
-        text          = document.getElementById('ability' + id + '-text').value,
-        transReaction = document.getElementById('card-translation-reaction').value,
-	transDouble   = document.getElementById('card-translation-double').value,
-        transTriple   = document.getElementById('card-translation-triple').value,
-        transQuad     = document.getElementById('card-translation-quad').value;
-
-    // https://stackoverflow.com/a/35119260; http://jsfiddle.net/BaG4J/1/
-    var textblock = (function() {
-        var txt = '';
-
-	if (reaction.checked) {
-            if (transReaction.length) {
-                var txt = '[' + transReaction + '] ' + name + ': ' + text;
-            } else {
-                var txt = '[Reaction] ' + name + ': ' + text;
-            }
-	} else if (double.checked) {
-            if (transDouble.length) {
-                var txt = '[' + transDouble + '] ' + name + ': ' + text;
-            } else {
-                var txt = '[Double] ' + name + ': ' + text;
-            }
-        } else if (triple.checked) {
-            if (transTriple.length) {
-                var txt = '[' + transTriple + '] ' + name + ': ' + text;
-            } else {
-                var txt = '[Triple] ' + name + ': ' + text;
-            }
-        } else if (quad.checked) {
-            if (transQuad.length) {
-                var txt = '[' + transQuad + '] ' + name + ': ' + text;
-            } else {
-                var txt = '[Quad] ' + name + ': ' + text;
-            }
-        }
-
-        var lines = txt.split('\n');
-
-        for (var i = 0; i < lines.length; i++) {
-            writeScaled(
-                lines[i],
-                {x: pixelPosition.x, y: pixelPosition.y+(i*35)}
-            );
-        }
-    })();
-}
-
-/*
-
-Testing
-
-drawAbility = function(id, pixelPosition) {
-    getContext().font = '28px Georgia, serif';
-    getContext().fillStyle = 'black';
-    getContext().textAlign = 'left';
-
-    var reaction      = document.getElementById('ability' + id + '-reaction'),
-        double        = document.getElementById('ability' + id + '-double'),
-        triple        = document.getElementById('ability' + id + '-triple'),
-        quad          = document.getElementById('ability' + id + '-quad'),
-        name          = document.getElementById('ability' + id + '-name').value,
-        text          = document.getElementById('ability' + id + '-text').value,
-        transReaction = document.getElementById('card-translation-reaction').value,
-	transDouble   = document.getElementById('card-translation-double').value,
-        transTriple   = document.getElementById('card-translation-triple').value,
-        transQuad     = document.getElementById('card-translation-quad').value;
-
-    // https://stackoverflow.com/a/35119260; http://jsfiddle.net/BaG4J/1/
-    var textblock = (function() {
-        var txt = '';
-
-	if (reaction.checked) {
-            if (transReaction.length) {
-                var txt = '[' + transReaction + '] ' + name + ': ';
-            } else {
-                var txt = '[Reaction] ' + name + ': ';
-            }
-	} else if (double.checked) {
-            if (transDouble.length) {
-                var txt = '[' + transDouble + '] ' + name + ': ';
-            } else {
-                var txt = '[Double] ' + name + ': ';
-            }
-        } else if (triple.checked) {
-            if (transTriple.length) {
-                var txt = '[' + transTriple + '] ' + name + ': ';
-            } else {
-                var txt = '[Triple] ' + name + ': ';
-            }
-        } else if (quad.checked) {
-            if (transQuad.length) {
-                var txt = '[' + transQuad + '] ' + name + ': ';
-            } else {
-                var txt = '[Quad] ' + name + ': ';
-            }
-        }
-	// suffix separated out for use later as bold text
-	txt_suffix = txt;
-	txt = txt + text;
-        var lines = txt.split('\n');
-
-	    
-	 for (var i = 0; i < lines.length; i++) {
-	    getContext().font = 'bold, 28px Georgia, serif'; 
-            writeScaled(
-                lines[i],
-                {x: pixelPosition.x, y: pixelPosition.y+(i*35)}
-            );
-        }    
-	
-	    /* commented out to test
-        for (var i = 0; i < lines.length; i++) {
-            if (i == 0) {
-		getContext().font = '28px Georgia, serif, bold';    
-		writeScaled(txt_suffix, {x: pixelPosition.x, y:pixelPosition.y(i+35)});
-		getContext().font = '28px Georgia, serif';    
-		writeScaled(lines[i], {x: pixelPosition.x + txt_suffix.length, y:pixelPosition.y(i+35)});
-	    } else writeScaled(
-                lines[i],
-                {x: pixelPosition.x, y: pixelPosition.y+(i*35)}
-            );
-        }
-	    
-    })();
-}
-
-*/
-
-drawCardTranslationAbilities = function(value) {
-    getContext().font = '28px Georgia, serif';
+drawPilotTitle = function(value) {
+    getContext().font = '12px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = 'center';
-    writeScaled(value, {x: (1772/2), y: 55});
+    writeScaled(value, {x: 0, y: 0});
 }
 
-drawCardTitle = function(value) {
-    getContext().font = '92px rodchenkoctt';
+drawPilotName = function(value) {
+    getContext().font = '12px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = 'center';
-    writeScaled(value, {x: (1772/2), y: 135});
+    writeScaled(value, {x: (10), y: 10});
 }
 
-
-
+drawPilotText = function(value) {
+    getContext().font = '12px rodchenkoctt';
+    getContext().fillStyle = 'white';
+    getContext().textAlign = 'center';
+    writeScaled(value, {x: (10), y: 10});
+}
 
 function getLabel(element)
 {
@@ -232,73 +86,6 @@ function getImage(element)
     return $(element).find("img")[0];
 }
 
-function getSelectedRunemark(radioDiv) {
-    var checked = $(radioDiv).find('input:checked');
-    if (checked.length > 0)
-    {
-        //console.log(getImage(getLabel(checked[0])).getAttribute("src"));
-        return getImage(getLabel(checked[0])).getAttribute("src");
-    }
-    return null;
-}
-
-
-
-function setSelectedFactionRunemark(runemark){
-    var factionRunemarksDiv = $("#factionRunemarkSelect");
-    {
-        var checked = factionRunemarksDiv.find('input:checked');
-        for (var i = 0; i < checked.length; i++) {
-            checked[i].checked = false;
-        }
-        var icons = factionRunemarksDiv.find('img');
-        for (var i = 0; i < icons.length; i++) {
-            icons[i].style.backgroundColor = 'black';
-        }
-    }
-        var queryString = "img[src='"+ runemark +"']";
-        var imgs = factionRunemarksDiv.find(queryString);
-        if (imgs.length > 0) {
-            var checkbox = $(imgs[0].parentNode.parentNode).find('input')[0];
-            checkbox.checked = true;
-            imgs[0].style.backgroundColor = "#00bc8c";
-        } else {
-            var newDiv = addToImageCheckboxSelector(runemark, factionRunemarksDiv[0], 'black');
-            $(newDiv).find('img')[0].style.backgroundColor = "#00bc8c";
-            $(newDiv).find('input')[0].checked = true;
-        }
-}
-function setSelectedSubfactionRunemark(runemark){
-    var subfactionRunemarksDiv = $("#subfactionRunemarkSelect");
-    {
-        var checked = subfactionRunemarksDiv.find('input:checked');
-        for (var i = 0; i < checked.length; i++) {
-            checked[i].checked = false;
-        }
-        var icons = subfactionRunemarksDiv.find('img');
-        for (var i = 0; i < icons.length; i++) {
-            icons[i].style.backgroundColor = 'black';
-        }
-    }
-        var queryString = "img[src='"+ runemark +"']";
-        var imgs = subfactionRunemarksDiv.find(queryString);
-        if (imgs.length > 0) {
-            var checkbox = $(imgs[0].parentNode.parentNode).find('input')[0];
-            checkbox.checked = true;
-            imgs[0].style.backgroundColor = "#00bc8c";
-        } else {
-            var newDiv = addToImageCheckboxSelector(runemark, subfactionRunemarksDiv[0], 'black');
-            $(newDiv).find('img')[0].style.backgroundColor = "#00bc8c";
-            $(newDiv).find('input')[0].checked = true;
-        }
-}
-function getSelectedFactionRunemark() {
-    return getSelectedRunemark($('#factionRunemarkSelect')[0]);
-}
-
-function getSelectedSubfactionRunemark() {
-    return getSelectedRunemark($('#subfactionRunemarkSelect')[0]);
-}
 
 function drawImage(scaledPosition, scaledSize, image)
 {
@@ -326,60 +113,6 @@ function drawImageSrc(scaledPosition, scaledSize, imageSrc)
 }
 
 
-
-function drawTagRunemark(index, runemark, row) {
-    // draw the runemarks
-    var positions = []
-
-    if (row == 1 && document.getElementById('ability1-toggle').checked) {
-        positions = [{x: 175, y: 225}, {x: 285, y: 225}, {x: 395, y: 225}];
-    } else if (row == 2 && document.getElementById('ability2-toggle').checked) {
-        positions = [{x: 175, y: 410}, {x: 285, y: 410}, {x: 395, y: 410}];
-    } else if (row == 3 && document.getElementById('ability3-toggle').checked) {
-        positions = [{x: 175, y: 580}, {x: 285, y: 580}, {x: 395, y: 580}];
-    } else if (row == 4 && document.getElementById('ability4-toggle').checked) {
-        positions = [{x: 175, y: 760}, {x: 285, y: 760}, {x: 395, y: 760}];
-    } else if (row == 5 && document.getElementById('ability5-toggle').checked) {
-        positions = [{x: 175, y: 940}, {x: 285, y: 940}, {x: 395, y: 940}];
-    } else if (row == 6 && document.getElementById('ability6-toggle').checked) {
-        positions = [{x: 175, y: 1115}, {x: 285, y: 1115}, {x: 395, y: 1115}];
-    }
-
-/*
-with 4th runemark
-
-    if (row == 1 && document.getElementById('ability1-toggle').checked) {
-        positions = [{x: 175, y: 225}, {x: 285, y: 225}, {x: 395, y: 225}, {x: 505, y: 225}];
-    } else if (row == 2 && document.getElementById('ability2-toggle').checked) {
-        positions = [{x: 175, y: 410}, {x: 285, y: 410}, {x: 395, y: 410}, {x: 505, y: 410}];
-    } else if (row == 3 && document.getElementById('ability3-toggle').checked) {
-        positions = [{x: 175, y: 580}, {x: 285, y: 580}, {x: 395, y: 580}, {x: 505, y: 580}];
-    } else if (row == 4 && document.getElementById('ability4-toggle').checked) {
-        positions = [{x: 175, y: 760}, {x: 285, y: 760}, {x: 395, y: 760}, {x: 505, y: 760}];
-    } else if (row == 5 && document.getElementById('ability5-toggle').checked) {
-        positions = [{x: 175, y: 940}, {x: 285, y: 940}, {x: 395, y: 940}, {x: 505, y: 940}];
-    } else if (row == 6 && document.getElementById('ability6-toggle').checked) {
-        positions = [{x: 175, y: 1115}, {x: 285, y: 1115}, {x: 395, y: 1115}, {x: 505, y: 1115}];
-    }
-*/
-	
-	
-    if (index >= positions.length) return;
-
-    var img = $("#circle")[0],
-        position = scalePixelPosition(positions[index]),
-        size = scalePixelPosition({x: 90, y: 90});
-
-    // position = scalePixelPosition({x: positions[index].x + 15, y: positions[index].y + 15});
-    // size = scalePixelPosition({x: 130, y: 130});
-    position = scalePixelPosition({x: positions[index].x, y: positions[index].y});
-
-    drawImage(position, {x: 90, y: 90}, img);
-    drawImageSrc(position, size, runemark);
-}
-
-
-
 function getName()
 {
     var textInput = $("#saveNameInput")[0];
@@ -393,97 +126,6 @@ function setName(name)
 }
 
 
-
-function readtagRunemarksOne() {
-    var array = new Array;
-
-    var checkedBoxes = $("#tagRunemarkSelect_abilitiesCollapseFourOne").find('input:checked');
-
-    for (i = 0; i < checkedBoxes.length; i++) {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-function readTagRunemarksTwo() {
-    var array = new Array;
-
-    var checkedBoxes = $("#tagRunemarkSelect_abilitiesCollapseFourTwo").find('input:checked');
-
-    for (i = 0; i < checkedBoxes.length; i++) {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-function readTagRunemarksThree() {
-    var array = new Array;
-
-    var checkedBoxes = $("#tagRunemarkSelect_abilitiesCollapseFourThree").find('input:checked');
-
-    for (i = 0; i < checkedBoxes.length; i++) {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-function readTagRunemarksFour() {
-    var array = new Array;
-
-    var checkedBoxes = $("#tagRunemarkSelect_abilitiesCollapseFourFour").find('input:checked');
-
-    for (i = 0; i < checkedBoxes.length; i++) {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-function readTagRunemarksFive() {
-    var array = new Array;
-
-    var checkedBoxes = $("#tagRunemarkSelect_abilitiesCollapseFourFifth").find('input:checked');
-
-    for (i = 0; i < checkedBoxes.length; i++) {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-function readTagRunemarksSix() {
-    var array = new Array;
-
-    var checkedBoxes = $("#tagRunemarkSelect_abilitiesCollapseFourSixth").find('input:checked');
-
-    for (i = 0; i < checkedBoxes.length; i++) {
-        array.push(getImage(getLabel(checkedBoxes[i])).getAttribute("src"));
-    }
-    return array;
-}
-
-function setSelectedTagRunemarks(selectedRunemarksArray){
-    // var tagRunemarksDiv = $('#tagRunemarkSelect');
-    var tagRunemarksDiv = $("[id^='tagRunemarkSelect_']");
-    {
-        var checked = tagRunemarksDiv.find('input:checked');
-        for (var i = 0; i < checked.length; i++) {
-            checked[i].checked = false;
-        }
-        var icons = tagRunemarksDiv.find('img');
-        for (var i = 0; i < icons.length; i++) {
-            icons[i].style.backgroundColor = 'white';
-        }
-    }
-    for (var i = 0; i < selectedRunemarksArray.length; i++) {
-        var runemark = selectedRunemarksArray[i];
-        var queryString = "img[src='"+ runemark +"']";
-        var imgs = tagRunemarksDiv.find(queryString);
-        if (imgs.length > 0) {
-            var checkbox = $(imgs[0].parentNode.parentNode).find('input')[0];
-            checkbox.checked = true;
-            imgs[0].style.backgroundColor = "#00bc8c";
-        } else {
-            var newDiv = addToImageCheckboxSelector(runemark, tagRunemarksDiv[0], 'white');
-            $(newDiv).find('img')[0].style.backgroundColor = "#00bc8c";
-            $(newDiv).find('input')[0].checked = true;
-        }
-    }
-}
-
 function readControls()
 {
     var data = new Object;
@@ -491,186 +133,21 @@ function readControls()
     // data.imageUrl = getModelImage();
     // data.imageProperties = getModelImageProperties();
 
-    data.cardTranslationAbilities = document.getElementById('card-translation-abilities').value;
-    data.cardTitle = document.getElementById('card-title').value;
-
-    data.factionRunemark = getSelectedFactionRunemark();
-    data.subfactionRunemark = getSelectedSubfactionRunemark();
-
-    data.ability1Name = document.getElementById('ability1-name').value;
-    data.ability2Name = document.getElementById('ability2-name').value;
-    data.ability3Name = document.getElementById('ability3-name').value;
-    data.ability4Name = document.getElementById('ability4-name').value;
-    data.ability5Name = document.getElementById('ability5-name').value;
-    data.ability6Name = document.getElementById('ability6-name').value;
-
-    data.ability1Text = document.getElementById('ability1-text').value;
-    data.ability2Text = document.getElementById('ability2-text').value;
-    data.ability3Text = document.getElementById('ability3-text').value;
-    data.ability4Text = document.getElementById('ability4-text').value;
-    data.ability5Text = document.getElementById('ability5-text').value;
-    data.ability6Text = document.getElementById('ability6-text').value;
-
-
-    data.tagRunemarksOne = readtagRunemarksOne();
-    data.tagRunemarksTwo = readTagRunemarksTwo();
-    data.tagRunemarksThree = readTagRunemarksThree();
-    data.tagRunemarksFour = readTagRunemarksFour();
-    data.tagRunemarksFive = readTagRunemarksFive();
-    data.tagRunemarksSix = readTagRunemarksSix();
-
+    data.pilotTitle = document.getElementById('pilot-title').value;
+    data.pilotName = document.getElementById('pilot-name').value;
+    data.pilotText = document.getElementById('pilot-text').value;
     return data;
 }
 
-function drawFactionRunemark(image) {
-    // drawImageSrc({x: 57.5, y: 57.5}, {x: 100, y: 100}, image);
-    drawImageSrc({x: 92.5, y: 35}, {x: 135, y: 135}, image);
-	if(getSelectedSubfactionRunemark() == null || getSelectedSubfactionRunemark() == 'assets/img/blank.gif'){
-		if (document.getElementById('ability1-toggle').checked) {
-			var positions = {x: 60, y: 225},
-				replacedImage = image.replace('white', 'black');
-			drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-			drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-		}
 
-		if (document.getElementById('ability2-toggle').checked) {
-			var positions = {x: 60, y: 405},
-				replacedImage = image.replace('white', 'black');
-			drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-			drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-		}
-
-		if (document.getElementById('ability3-toggle').checked) {
-			var positions = {x: 60, y: 575},
-				replacedImage = image.replace('white', 'black');
-			drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-			drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-		}
-
-		if (document.getElementById('ability4-toggle').checked) {
-			var positions = {x: 60, y: 755},
-				replacedImage = image.replace('white', 'black');
-			drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-			drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-		}
-
-		if (document.getElementById('ability5-toggle').checked) {
-			var positions = {x: 60, y: 935},
-				replacedImage = image.replace('white', 'black');
-			drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-			drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-		}
-
-		if (document.getElementById('ability6-toggle').checked) {
-			var positions = {x: 60, y: 1110},
-				replacedImage = image.replace('white', 'black');
-			drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-			drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-		}
-	}
-
-}
-function drawSubfactionRunemark(image) {
-    // drawImageSrc({x: 57.5, y: 57.5}, {x: 90, y: 90}, image);
-    drawImageSrc({x: 224, y: 58}, {x: 90, y: 90}, image);
-
-    if (document.getElementById('ability1-toggle').checked) {
-        var positions = {x: 65, y: 225},
-            replacedImage = image.replace('white', 'black');
-        drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-        drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-    }
-
-    if (document.getElementById('ability2-toggle').checked) {
-        var positions = {x: 65, y: 410},
-            replacedImage = image.replace('white', 'black');
-        drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-        drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-    }
-
-    if (document.getElementById('ability3-toggle').checked) {
-        var positions = {x: 65, y: 580},
-            replacedImage = image.replace('white', 'black');
-        drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-        drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-    }
-
-    if (document.getElementById('ability4-toggle').checked) {
-        var positions = {x: 65, y: 760},
-            replacedImage = image.replace('white', 'black');
-        drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-        drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-    }
-
-    if (document.getElementById('ability5-toggle').checked) {
-        var positions = {x: 65, y: 940},
-            replacedImage = image.replace('white', 'black');
-        drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-        drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-    }
-
-    if (document.getElementById('ability6-toggle').checked) {
-        var positions = {x: 65, y: 1115},
-            replacedImage = image.replace('white', 'black');
-        drawImage(positions, {x: 90, y: 90}, $("#circle")[0]);
-        drawImageSrc(positions, {x: 90, y: 90}, replacedImage);
-    }
-}
 
 render = function(cardData) {
     drawBackground();
     // drawModel(cardData.imageUrl, cardData.imageProperties);
 
-    drawCardTranslationAbilities(cardData.cardTranslationAbilities);
-    drawCardTitle(cardData.cardTitle);
-
-    drawFactionRunemark(cardData.factionRunemark);
-    drawSubfactionRunemark(cardData.subfactionRunemark);
-
-
-    if (document.getElementById('ability1-toggle').checked) {
-        drawAbility(1, {x: 500, y:  225});
-    }
-
-    if (document.getElementById('ability2-toggle').checked) {
-        drawAbility(2, {x: 500, y:  400});
-    }
-
-    if (document.getElementById('ability3-toggle').checked) {
-        drawAbility(3, {x: 500, y:  575});
-    }
-
-    if (document.getElementById('ability4-toggle').checked) {
-        drawAbility(4, {x: 500, y:  750});
-    }
-
-    if (document.getElementById('ability5-toggle').checked) {
-        drawAbility(5, {x: 500, y:  925});
-    }
-
-    if (document.getElementById('ability6-toggle').checked) {
-        drawAbility(6, {x: 500, y: 1100});
-    }
-
-
-    for (i = 0; i < cardData.tagRunemarksOne.length; i++) {
-        drawTagRunemark(i, cardData.tagRunemarksOne[i], 1);
-    }
-    for (i = 0; i < cardData.tagRunemarksTwo.length; i++) {
-        drawTagRunemark(i, cardData.tagRunemarksTwo[i], 2);
-    }
-    for (i = 0; i < cardData.tagRunemarksThree.length; i++) {
-        drawTagRunemark(i, cardData.tagRunemarksThree[i], 3);
-    }
-    for (i = 0; i < cardData.tagRunemarksFour.length; i++) {
-        drawTagRunemark(i, cardData.tagRunemarksFour[i], 4);
-    }
-    for (i = 0; i < cardData.tagRunemarksFive.length; i++) {
-        drawTagRunemark(i, cardData.tagRunemarksFive[i], 5);
-    }
-    for (i = 0; i < cardData.tagRunemarksSix.length; i++) {
-        drawTagRunemark(i, cardData.tagRunemarksSix[i], 6);
-    }
+    drawPilotTitle(cardData.pilotTitle);
+    drawPilotName(cardData.pilotName);
+    drawPilotText(cardData.pilotText);
 
 };
 
@@ -680,40 +157,9 @@ function writeControls(cardData)
     // setModelImage(cardData.imageUrl);
     // setModelImageProperties(cardData.imageProperties);
 
-    $('#card-title').value = cardData.cardTitle;
-    $('#card-translation-abilities').value = cardData.cardTranslationAbilities;
-    $('#card-translation-double').value = cardData.cardTranslationDouble;
-    $('#card-translation-triple').value = cardData.cardTranslationTriple;
-    $('#card-translation-quad').value = cardData.cardTranslationQuad;
-
-    setSelectedFactionRunemark(cardData.factionRunemark);
-
-    setSelectedSubfactionRunemark(cardData.subfactionRunemark);
-
-     $('#ability1-name').value = cardData.ability1Name;
-     $('#ability2-name').value = cardData.ability2Name;
-     $('#ability3-name').value = cardData.ability3Name;
-     $('#ability4-name').value = cardData.ability4Name;
-     $('#ability5-name').value = cardData.ability5Name;
-     $('#ability6-name').value = cardData.ability6Name;
-
-     $('#ability1-text').text(cardData.ability1Text);
-     $('#ability2-text').text(cardData.ability2Text);
-     $('#ability3-text').text(cardData.ability3Text);
-     $('#ability4-text').text(cardData.ability4Text);
-     $('#ability5-text').text(cardData.ability5Text);
-     $('#ability6-text').text(cardData.ability6Text);
-
-    var runes_one = cardData.tagRunemarksOne,
-        runes_two = cardData.tagRunemarksTwo,
-        runes_three = cardData.tagRunemarksThree,
-        runes_four = cardData.tagRunemarksFour,
-        runes_five = cardData.tagRunemarksFive,
-        runes_six = cardData.tagRunemarksSix
-    var tagRuneMarks = $.merge(runes_one, runes_two, runes_three, runes_four, runes_five, runes_six)
-
-    setSelectedTagRunemarks(tagRuneMarks);
-
+    $('#pilot-title').value = cardData.pilotTitle;
+    $('#pilot-name').value = cardData.pilotName;
+    $('#pilot-text').value = cardData.pilotText;
 }
 
 function defaultCardData() {
@@ -722,41 +168,10 @@ function defaultCardData() {
     // cardData.imageUrl = null;
     // cardData.imageProperties = getDefaultModelImageProperties();
 
-    cardData.cardTitle = 'Iron Golem';
-    cardData.cardTranslationAbilities = 'Abilities';
-    cardData.cardTranslationReaction = 'Reaction';
-    cardData.cardTranslationDouble = 'Double';
-    cardData.cardTranslationTriple = 'Triple';
-    cardData.cardTranslationQuad = 'Quad';
+    cardData.pilotName = 'Lord Flashheart';
+    cardData.pilotTitle = 'Wing Commander';
+    cardData.pilotText = 'This is the text';
 
-    cardData.factionRunemark = 'runemarks/white/factions-chaos-iron-golems.svg';
-    cardData.subfactionRunemark = 'assets/img/blank.gif';
-
-    cardData.ability1Name = 'First ability name';
-    cardData.ability2Name = 'Second ability name';
-    cardData.ability3Name = 'Third ability name';
-    cardData.ability4Name = 'Fourth ability name';
-    cardData.ability5Name = 'Fifth ability name';
-    cardData.ability6Name = 'Sixth ability name';
-
-    cardData.ability1Text = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis\ndis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque\neu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel.';
-    cardData.ability2Text = 'Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit.\nAenean commodo ligula eget dolor.';
-    cardData.ability3Text = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAenean commodo ligula eget dolor.';
-    cardData.ability4Text = 'Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit.\nAenean commodo ligula eget dolor.';
-    cardData.ability5Text = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAenean commodo ligula eget dolor.';
-    cardData.ability6Text = 'Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit.\nAenean commodo ligula eget dolor.';
-
-    cardData.tagRunemarksOne = new Array;
-    cardData.tagRunemarksOne.push('runemarks/black/fighters-berserker.svg');
-
-    cardData.tagRunemarksTwo = new Array;
-    cardData.tagRunemarksThree = new Array;
-    cardData.tagRunemarksFour = new Array;
-    cardData.tagRunemarksFive = new Array;
-    cardData.tagRunemarksSix = new Array;
-
-    // cardData.weapon1 = getDefaultWeaponData1();
-    // cardData.weapon2 = getDefaultWeaponData2();
     return cardData;
 }
 
@@ -887,36 +302,7 @@ async function saveCardData(cardData)
     {
         // handle images we may have loaded from disk...
         cardData.imageUrl = await handleImageUrlFromDisk(cardData.imageUrl);
-        cardData.factionRunemark = await handleImageUrlFromDisk(cardData.factionRunemark);
-        cardData.subfactionRunemark = await handleImageUrlFromDisk(cardData.subfactionRunemark);
 
-        for (i = 0; i < cardData.tagRunemarksOne.length; i++)
-        {
-            cardData.tagRunemarksOne[i] = await handleImageUrlFromDisk(cardData.tagRunemarksOne[i]);
-        }
-        for (i = 0; i < cardData.tagRunemarksTwo.length; i++)
-        {
-            cardData.tagRunemarksTwo[i] = await handleImageUrlFromDisk(cardData.tagRunemarksTwo[i]);
-        }
-        for (i = 0; i < cardData.tagRunemarksThree.length; i++)
-        {
-            cardData.tagRunemarksThree[i] = await handleImageUrlFromDisk(cardData.tagRunemarksThree[i]);
-        }
-        for (i = 0; i < cardData.tagRunemarksFour.length; i++)
-        {
-            cardData.tagRunemarksFour[i] = await handleImageUrlFromDisk(cardData.tagRunemarksFour[i]);
-        }
-        for (i = 0; i < cardData.tagRunemarksFive.length; i++)
-        {
-            cardData.tagRunemarksFive[i] = await handleImageUrlFromDisk(cardData.tagRunemarksFive[i]);
-        }
-        for (i = 0; i < cardData.tagRunemarksSix.length; i++)
-        {
-            cardData.tagRunemarksSix[i] = await handleImageUrlFromDisk(cardData.tagRunemarksSix[i]);
-        }
-
-        // cardData.weapon1.runemark = await handleImageUrlFromDisk(cardData.weapon1.runemark);
-        // cardData.weapon2.runemark = await handleImageUrlFromDisk(cardData.weapon2.runemark);
 
         finishSaving();
     }
@@ -941,49 +327,6 @@ onAnyChange = function() {
     saveLatestCardData();
 }
 
-function onWeaponControlsToggled(weaponCheckbox) {
-    var controlsDiv = $(weaponCheckbox.parentNode).find("#weaponInputs")[0];
-    controlsDiv.style.display = weaponCheckbox.checked ? "block" : "none";
-
-    onAnyChange();
-}
-
-onWeaponMinRangeChanged = function(minRange) {
-    var maxRange = $(minRange.parentNode).find("#rangeMax")[0];
-    maxRange.value = Math.max(minRange.value, maxRange.value);
-
-    onAnyChange();
-}
-
-onWeaponMaxRangeChanged = function(maxRange) {
-    var minRange = $(maxRange.parentNode).find("#rangeMin")[0];
-    minRange.value = Math.min(maxRange.value, minRange.value);
-
-    onAnyChange();
-}
-
-onRunemarkSelectionChanged = function(radioButton, backgroundColor)
-{
-    var radioSection = radioButton.parentNode.parentNode;
-    var allRadioButtons = $('input', radioSection);
-
-    for (i = 0; i < allRadioButtons.length; i++)
-    {
-        getImage(getLabel(allRadioButtons[i])).style.backgroundColor = backgroundColor;
-    }
-
-    // getImage(getLabel(radioButton)).style.backgroundColor = "tomato";
-    getImage(getLabel(radioButton)).style.backgroundColor = "#00bc8c";
-
-    onAnyChange();
-}
-
-onTagRunemarkSelectionChanged = function(checkbox, backgroundColor)
-{
-    // getImage(getLabel(checkbox)).style.backgroundColor = checkbox.checked ? "tomato" : backgroundColor;
-    getImage(getLabel(checkbox)).style.backgroundColor = checkbox.checked ? "#00bc8c" : backgroundColor;
-    onAnyChange();
-}
 
 addToImageRadioSelector = function(imageSrc, imageSelector, radioGroupName, bgColor)
 {
@@ -997,37 +340,6 @@ addToImageRadioSelector = function(imageSrc, imageSelector, radioGroupName, bgCo
     return div;
 }
 
-onFactionRunemarkFileSelect = function()
-{
-    var imageSelect = $("#additionalFactionMarkSelect")[0];
-    var selectGrid = $("#factionRunemarkSelect")[0];
-
-    for (i = 0; i < imageSelect.files.length; i++)
-    {
-        addToImageRadioSelector(URL.createObjectURL(imageSelect.files[i]), selectGrid, "faction", "black");
-    }
-}
-
-onSubfactionRunemarkFileSelect = function()
-{
-    var imageSelect = $("#additionalSubfactionMarkSelect")[0];
-    var selectGrid = $("#subfactionRunemarkSelect")[0];
-
-    for (i = 0; i < imageSelect.files.length; i++)
-    {
-        addToImageRadioSelector(URL.createObjectURL(imageSelect.files[i]), selectGrid, "subfaction", "black");
-    }
-}
-
-onWeaponRunemarkFileSelect = function(input, weaponName)
-{
-    var grid = $(input.parentNode).find("#weaponRunemarkSelect")[0];
-
-    for (i = 0; i < input.files.length; i++)
-    {
-        addToImageRadioSelector(URL.createObjectURL(input.files[i]), grid, weaponName, "white");
-    }
-}
 
 function addToImageCheckboxSelector(imgSrc, grid, bgColor)
 {
@@ -1043,17 +355,6 @@ function addToImageCheckboxSelector(imgSrc, grid, bgColor)
     return div;
 }
 
-function onTagRunemarkFileSelect()
-{
-    var imageSelect = $("#additionalTagMarkSelect")[0];
-    // var selectGrid = $("#tagRunemarkSelect")[0];
-    var selectGrid = $("[id^='tagRunemarkSelect_']")[0];
-
-    for (i = 0; i < imageSelect.files.length; i++)
-    {
-        addToImageCheckboxSelector(URL.createObjectURL(imageSelect.files[i]), selectGrid, "white");
-    }
-}
 
 function onClearCache()
 {
@@ -1129,7 +430,7 @@ function onDeleteClicked()
 function saveCardAsImage() {
     var element = document.createElement('a');
     element.setAttribute('href', document.getElementById('canvas').toDataURL('image/png'));
-    element.setAttribute('download', 'warcry-ability-card.png');
+    element.setAttribute('download', 'aeronautica-pilot-card.png');
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
