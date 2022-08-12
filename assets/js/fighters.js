@@ -61,17 +61,17 @@ drawCardElementFromInputId = function(inputId, pixelPosition) {
 // FighterName, FighterName2, Points, Structure, Transport, Fuel, Throttle, AceManoveuvres, Handing, MinSpeed, MaxSpeed, MaxAltitude
 
 drawFighterName = function(value) {
-    getContext().font = '70px rodchenkoctt';
+    getContext().font = '80px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
     writeScaled(value, {x: 100, y: 130});
 }
 
 drawFighterName2 = function(value) {
-    getContext().font = '32px rodchenkoctt';
+    getContext().font = '40px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
-    writeScaled(value, {x: 100, y: 150});
+    writeScaled(value, {x: 100, y: 170});
 }
 
 drawStructure = function(value) {
@@ -217,7 +217,7 @@ function drawModel(imageUrl, imageProps)
     {
         var image = new Image();
         image.onload = function(){
-            var position = scalePixelPosition({x: 590 + imageProps.offsetX, y: imageProps.offsetY});
+            var position = scalePixelPosition({x: 250 + imageProps.offsetX, y: 250 + imageProps.offsetY});
             var scale = imageProps.scalePercent/100.0;
             var width = image.width * scale;
             var height = image.height * scale;
@@ -405,14 +405,18 @@ render = function(fighterData) {
     
     // section added above
     
+    
 
     getContext().font = "20px rodchenkoctt";
     getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
 
-    drawStructure(data.pstructure);
+    
+    drawPointCost(fighterData.pointCost);
+    
     drawTransport(data.transport);
+    drawStructure(data.pstructure);
     drawFuel(data.fuel);
     drawThrottle(data.throttle);
     drawAceManoeuvres(data.aceManoeuvres);
@@ -422,7 +426,6 @@ render = function(fighterData) {
     drawMaxAltitude(data.maxAltitude);    
     
     
-    drawPointCost(fighterData.pointCost);
 
     getContext().font = "70px rodchenkoctt";
     getContext().textBaseline = "top";
