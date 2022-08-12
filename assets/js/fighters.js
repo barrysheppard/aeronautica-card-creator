@@ -65,7 +65,7 @@ drawFighterName = function(value) {
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
     getContext().textBaseline = "bottom";
-    writeScaled(value, {x: 100, y: 135});
+    writeScaled(value, {x: 100, y: 140});
 }
 
 drawFighterName2 = function(value) {
@@ -73,7 +73,7 @@ drawFighterName2 = function(value) {
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
     getContext().textBaseline = "bottom";
-    writeScaled(value, {x: 100, y: 170});
+    writeScaled(value, {x: 100, y: 175});
 }
 
 drawStructure = function(value) {
