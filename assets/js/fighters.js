@@ -514,13 +514,13 @@ render = function(fighterData) {
     {
         drawWeapon(fighterData.weapon2, {x: 100, y: 873});
     }
-    if (fighterData.weapon2.enabled)
+    if (fighterData.weapon3.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 100, y: 926});
+        drawWeapon(fighterData.weapon3, {x: 100, y: 926});
     }
-    if (fighterData.weapon2.enabled)
+    if (fighterData.weapon4.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 100, y: 979});
+        drawWeapon(fighterData.weapon4, {x: 100, y: 979});
     }
 }
 
