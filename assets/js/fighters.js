@@ -114,8 +114,8 @@ drawMaxAltitude = function(value) {
 
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
-    getContext().textAlign = "left";
-    writeScaled(value, {x: 1600, y: 85});
+    getContext().textAlign = "middle";
+    writeScaled(value, {x: 1610, y: 85});
 }
 
 
