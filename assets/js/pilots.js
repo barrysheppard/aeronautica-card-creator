@@ -24,7 +24,7 @@ getContext = function() {
 }
 
 getBackgroundImage = function() {
-    if (document.getElementById('aeronautica_pilot_green').checked) {
+    if (document.getElementById('select_aeronautica_pilot_green').checked) {
         return document.getElementById('aeronautica_pilot_green');
     }
 	        
