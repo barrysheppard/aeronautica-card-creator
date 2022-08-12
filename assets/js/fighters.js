@@ -122,7 +122,7 @@ drawMaxAltitude = function(value) {
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
     getContext().textAlign = "center";
-    writeScaled(value, {x: 1630, y: 85});
+    writeScaled(value, {x: 1635, y: 85});
 }
 
 
@@ -146,7 +146,7 @@ drawWeapon = function(weaponData, pixelPosition) {
         {x: pixelPosition.x + 600, y: statsPosY});
 
     writeScaled(
-        weaponData.damage,
+        weaponData.damage + "+",
         {x: pixelPosition.x + 800, y: statsPosY});    
 
     writeScaled(
