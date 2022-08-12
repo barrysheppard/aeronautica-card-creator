@@ -75,7 +75,7 @@ drawFighterName2 = function(value) {
 }
 
 drawStructure = function(value) {
-    writeScaled(value, {x: 545, y: 391});
+    writeScaled(value, {x: 545, y: 1000});
 }
 
 drawTransport = function(value) {
@@ -407,7 +407,7 @@ render = function(fighterData) {
     
     
 
-    getContext().font = "20px rodchenkoctt";
+    getContext().font = "30px rodchenkoctt";
     getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
