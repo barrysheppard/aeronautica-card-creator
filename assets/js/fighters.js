@@ -64,6 +64,7 @@ drawFighterName = function(value) {
     getContext().font = '80px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
+    getContext().textBaseline = "bottom";
     writeScaled(value, {x: 100, y: 130});
 }
 
@@ -71,11 +72,12 @@ drawFighterName2 = function(value) {
     getContext().font = '40px rodchenkoctt';
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
+    getContext().textBaseline = "bottom";
     writeScaled(value, {x: 100, y: 170});
 }
 
 drawStructure = function(value) {
-    writeScaled(value, {x: 545, y: 700});
+    writeScaled(value, {x: 550, y: 680});
 }
 
 drawTransport = function(value) {
@@ -112,7 +114,7 @@ drawMaxAltitude = function(value) {
 
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
-    writeScaled(value, {x: 1400, y: 140});
+    writeScaled(value, {x: 1500, y: 160});
 }
 
 
