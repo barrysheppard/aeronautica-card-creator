@@ -57,23 +57,23 @@ drawCardElementFromInputId = function(inputId, pixelPosition) {
 
 drawPilotTitle = function(value) {
     getContext().font = '12px rodchenkoctt';
-    getContext().fillStyle = 'white';
-    getContext().textAlign = 'center';
+    getContext().fillStyle = 'black';
+    getContext().textAlign = 'left';
     writeScaled(value, {x: 0, y: 0});
 }
 
 drawPilotName = function(value) {
     getContext().font = '12px rodchenkoctt';
-    getContext().fillStyle = 'white';
-    getContext().textAlign = 'center';
-    writeScaled(value, {x: (10), y: 10});
+    getContext().fillStyle = 'black';
+    getContext().textAlign = 'left';
+    writeScaled(value, {x: 10, y: 10});
 }
 
 drawPilotText = function(value) {
     getContext().font = '12px rodchenkoctt';
-    getContext().fillStyle = 'white';
-    getContext().textAlign = 'center';
-    writeScaled(value, {x: (10), y: 10});
+    getContext().fillStyle = 'black';
+    getContext().textAlign = 'left';
+    writeScaled(value, {x: 20, y: 20});
 }
 
 function getLabel(element)
