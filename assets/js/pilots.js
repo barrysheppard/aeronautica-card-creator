@@ -177,8 +177,8 @@ function readControls()
 {
     var data = new Object;
     data.name = getName();
-    // data.imageUrl = getModelImage();
-    // data.imageProperties = getModelImageProperties();
+    data.imageUrl = getModelImage();
+    data.imageProperties = getModelImageProperties();
 
     data.pilotTitle = document.getElementById('pilot-title').value;
     data.pilotName = document.getElementById('pilot-name').value;
@@ -190,7 +190,7 @@ function readControls()
 
 render = function(cardData) {
     drawBackground();
-    // drawModel(cardData.imageUrl, cardData.imageProperties);
+    drawModel(cardData.imageUrl, cardData.imageProperties);
 
     drawPilotTitle(cardData.pilotTitle);
     drawPilotName(cardData.pilotName);
