@@ -70,13 +70,13 @@ drawPilotName = function(value) {
 }
 
 drawPilotText = function(value) {
-    getContext().font = '12px helvetica';
+    getContext().font = '8px helvetica';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
 	
     var lines = value.split('\n');
     for (var i = 0; i < lines.length; i++) {
-        writeScaled(lines[i], {x: 10, y: 170+(i*35) } );
+        writeScaled(lines[i], {x: 10, y: 170+(i*10) } );
     }
 }
 
