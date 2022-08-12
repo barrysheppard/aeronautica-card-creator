@@ -65,7 +65,7 @@ drawFighterName = function(value) {
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
     getContext().textBaseline = "bottom";
-    writeScaled(value, {x: 100, y: 140});
+    writeScaled(value, {x: 100, y: 150});
 }
 
 drawFighterName2 = function(value) {
@@ -73,7 +73,7 @@ drawFighterName2 = function(value) {
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
     getContext().textBaseline = "bottom";
-    writeScaled(value, {x: 100, y: 175});
+    writeScaled(value, {x: 100, y: 185});
 }
 
 drawStructure = function(value) {
@@ -155,7 +155,7 @@ drawWeapon = function(weaponData, pixelPosition) {
     
     writeScaled(
         weaponData.special,
-        {x: pixelPosition.x + 600, y: statsPosY});    
+        {x: pixelPosition.x + 1200, y: statsPosY});    
         
    
     //var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
@@ -448,16 +448,16 @@ render = function(fighterData) {
     
     if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 20, y: 820}); // Default was x:29, y:397
-        drawWeapon(fighterData.weapon2, {x: 20, y: 870}); // Default was x:29, y:564
+        drawWeapon(fighterData.weapon1, {x: 100, y: 820}); // Default was x:29, y:397
+        drawWeapon(fighterData.weapon2, {x: 100, y: 870}); // Default was x:29, y:564
     }
     else if (fighterData.weapon1.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 20, y: 820}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon1, {x: 100, y: 820}); // Default was x:29, y:463
     }
     else if (fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 20, y: 820}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon2, {x: 100, y: 820}); // Default was x:29, y:463
     }
 }
 
