@@ -178,7 +178,7 @@ drawWeapon = function(weaponData, pixelPosition) {
         dmg = " ";
     }
     else {
-         dmg = weaponData.damage + "+",
+         dmg = weaponData.damage + "+";
     }
     writeScaled(
         dmg,
