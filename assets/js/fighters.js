@@ -76,6 +76,8 @@ drawFighterName2 = function(value) {
     writeScaled(value, {x: 100, y: 185});
 }
 
+getContext().font = '40px helvetica';
+
 drawStructure = function(value) {
     writeScaled(value, {x: 580, y: 670});
 }
