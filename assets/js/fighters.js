@@ -65,7 +65,7 @@ drawFighterName = function(value) {
     getContext().fillStyle = 'white';
     getContext().textAlign = "left";
     getContext().textBaseline = "bottom";
-    writeScaled(value, {x: 100, y: 130});
+    writeScaled(value, {x: 100, y: 135});
 }
 
 drawFighterName2 = function(value) {
@@ -114,7 +114,7 @@ drawMaxAltitude = function(value) {
 
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
-    writeScaled(value, {x: 1550, y: 150});
+    writeScaled(value, {x: 1550, y: 50});
 }
 
 
