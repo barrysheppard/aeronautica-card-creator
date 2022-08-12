@@ -89,27 +89,27 @@ drawFuel = function(value) {
 }
 
 drawThrottle = function(value) {
-    writeScaled(value, {x: 680, y: 675});
+    writeScaled(value, {x: 1080, y: 675});
 }
 
 drawAceManoeuvres = function(value) {
-    writeScaled(value, {x: 680, y: 725});
+    writeScaled(value, {x: 1080, y: 725});
 }
 
 drawHandling = function(value) {
-    writeScaled(value, {x: 680, y: 775});
+    writeScaled(value, {x: 1080, y: 775});
 }
 
 drawMinSpeed = function(value) {
-    writeScaled(value, {x: 780, y: 675});
+    writeScaled(value, {x: 1780, y: 675});
 }
 
 drawMaxSpeed = function(value) {
-    writeScaled(value, {x: 780, y: 725});
+    writeScaled(value, {x: 1780, y: 725});
 }
 
 drawMaxAltitude = function(value) {
-    writeScaled(value, {x: 780, y: 775});
+    writeScaled(value, {x: 1780, y: 775});
 }
 
 drawPointCost = function(value) {
