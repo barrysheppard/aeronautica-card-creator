@@ -24,12 +24,34 @@ getContext = function() {
 }
 
 getBackgroundImage = function() {
-    if (document.getElementById('select-bg-dark-102').checked) {
-        return document.getElementById('bg-dark-102');
-
-    } else if (document.getElementById('select-aeronautica_card_imperial').checked) {
+    if (document.getElementById('select-aeronautica_card_imperial').checked) {
         return document.getElementById('aeronautica_card_imperial');
     }
+    } else if (document.getElementById('select-aeronautica_card_beige').checked) {
+        return document.getElementById('aeronautica_card_beige');
+    }
+    } else if (document.getElementById('select-aeronautica_card_blue').checked) {
+        return document.getElementById('aeronautica_card_blue');
+    }
+    } else if (document.getElementById('select-aeronautica_card_brown').checked) {
+        return document.getElementById('aeronautica_card_brown');
+    }
+    } else if (document.getElementById('select-aeronautica_card_cyan').checked) {
+        return document.getElementById('aeronautica_card_cyan');
+    }
+    } else if (document.getElementById('select-aeronautica_card_green').checked) {
+        return document.getElementById('aeronautica_card_green');
+    }
+    } else if (document.getElementById('select-aeronautica_card_pink').checked) {
+        return document.getElementById('aeronautica_card_pink');
+    }
+    } else if (document.getElementById('select-aeronautica_card_purple').checked) {
+        return document.getElementById('aeronautica_card_purple');
+    }
+    } else if (document.getElementById('select-aeronautica_card_red').checked) {
+        return document.getElementById('aeronautica_card_red');
+    }
+
 }
 
 drawBackground = function() {
