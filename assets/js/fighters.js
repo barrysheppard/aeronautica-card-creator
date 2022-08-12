@@ -437,11 +437,15 @@ render = function(fighterData) {
     getContext().textBaseline = "top";
     getContext().textAlign = "left";
     getContext().fillStyle = "black";
-    
-    
-    
+   
     drawPointCost(fighterData.pointCost);
 
+    getContext().font = "40px rodchenkoctt";
+    getContext().textBaseline = "top";
+    getContext().textAlign = "left";
+    getContext().fillStyle = "black";
+    
+    
     if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
     {
         drawWeapon(fighterData.weapon1, {x: 50, y: 750}); // Default was x:29, y:397
