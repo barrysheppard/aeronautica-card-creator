@@ -163,13 +163,24 @@ drawWeapon = function(weaponData, pixelPosition) {
     writeScaled(
         weaponData.fireArc,
         {x: pixelPosition.x + 450, y: statsPosY});
-
+    
+    if (weaponData.fbrShort == 0 AND weaponData.fbrMed == 0 AND weaponData.fbrLong == 0) {
+        fbr = " ";
+    }
+    else { fbr = weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong
+    }
     writeScaled(
-        weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong,
+        fbr,
         {x: pixelPosition.x + 720, y: statsPosY});
 
+    if (weaponData.damage == 0) {
+        dmg = " ";
+    }
+    else {
+         dmg = weaponData.damage + "+",
+    }
     writeScaled(
-        weaponData.damage + "+",
+        dmg,
         {x: pixelPosition.x + 870, y: statsPosY});    
 
     writeScaled(
@@ -346,6 +357,22 @@ function getDefaultWeaponData2()
     return data;
 }
 
+
+function getDefaultWeaponData3()
+{
+    var data = getDefaultWeaponData();
+    data.enabled = true;
+    return data;
+}
+
+function getDefaultWeaponData4()
+{
+    var data = getDefaultWeaponData();
+    data.enabled = false;
+    return data;
+}
+
+
 function readWeaponControls(weaponId)
 {
     var weaponData = new Object;
@@ -400,6 +427,8 @@ function readControls()
     data.pointCost = document.getElementById("pointCost").value;
     data.weapon1 = readWeaponControls("#weapon1");
     data.weapon2 = readWeaponControls("#weapon2");
+    data.weapon3 = readWeaponControls("#weapon3");
+    data.weapon4 = readWeaponControls("#weapon4");
 
     return data;
 }
@@ -468,18 +497,21 @@ render = function(fighterData) {
     getContext().fillStyle = "black";
     
     
-    if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
-    {
-        drawWeapon(fighterData.weapon1, {x: 100, y: 820}); 
-        drawWeapon(fighterData.weapon2, {x: 100, y: 873}); 
-    }
-    else if (fighterData.weapon1.enabled)
+    if (fighterData.weapon1.enabled)
     {
         drawWeapon(fighterData.weapon1, {x: 100, y: 820});
     }
-    else if (fighterData.weapon2.enabled)
+    if (fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 100, y: 820});
+        drawWeapon(fighterData.weapon2, {x: 100, y: 873});
+    }
+    if (fighterData.weapon2.enabled)
+    {
+        drawWeapon(fighterData.weapon2, {x: 100, y: 926});
+    }
+    if (fighterData.weapon2.enabled)
+    {
+        drawWeapon(fighterData.weapon2, {x: 100, y: 979});
     }
 }
 
@@ -502,6 +534,8 @@ function writeControls(fighterData)
     $("#pointCost")[0].value = fighterData.pointCost;
     writeWeaponControls("#weapon1", fighterData.weapon1, "weapon1");
     writeWeaponControls("#weapon2", fighterData.weapon2, "weapon2");
+    writeWeaponControls("#weapon3", fighterData.weapon1, "weapon3");
+    writeWeaponControls("#weapon4", fighterData.weapon2, "weapon4");
 }
 
 function defaultFighterData() {
@@ -525,6 +559,8 @@ function defaultFighterData() {
     fighterData.pointCost = 125;
     fighterData.weapon1 = getDefaultWeaponData1();
     fighterData.weapon2 = getDefaultWeaponData2();
+    fighterData.weapon3 = getDefaultWeaponData3();
+    fighterData.weapon4 = getDefaultWeaponData4();
     return fighterData;
 }
 
@@ -686,19 +722,6 @@ function onWeaponControlsToggled(weaponCheckbox) {
     onAnyChange();
 }
 
-onWeaponMinRangeChanged = function(minRange) {
-    var maxRange = $(minRange.parentNode).find("#rangeMax")[0];
-    maxRange.value = Math.max(minRange.value, maxRange.value);
-
-    onAnyChange();
-}
-
-onWeaponMaxRangeChanged = function(maxRange) {
-    var minRange = $(maxRange.parentNode).find("#rangeMin")[0];
-    minRange.value = Math.min(maxRange.value, minRange.value);
-
-    onAnyChange();
-}
 
 function onClearCache()
 {
