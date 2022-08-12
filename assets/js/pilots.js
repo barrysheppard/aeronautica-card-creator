@@ -59,14 +59,14 @@ drawPilotTitle = function(value) {
     getContext().font = '8px rodchenkoctt';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 20, y: 150});
+    writeScaled(value, {x: 20, y: 145});
 }
 
 drawPilotName = function(value) {
     getContext().font = '14px rodchenkoctt';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 20, y: 160});
+    writeScaled(value, {x: 20, y: 155});
 }
 
 drawPilotText = function(value) {
@@ -76,7 +76,7 @@ drawPilotText = function(value) {
 	
     var lines = value.split('\n');
     for (var i = 0; i < lines.length; i++) {
-        writeScaled(lines[i], {x: 20, y: 200+(i*10) } );
+        writeScaled(lines[i], {x: 20, y: 180+(i*10) } );
     }
 }
 
