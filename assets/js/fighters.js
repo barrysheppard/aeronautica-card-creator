@@ -356,7 +356,7 @@ function readControls()
     data.imageProperties = getModelImageProperties();
     data.fighterName = document.getElementById("fighterName").value;
     data.fighterName2 = document.getElementById("fighterName2").value;
-    data.structure = document.getElementById("structure").value;
+    data.pstructure = document.getElementById("structure").value;
     data.transport = document.getElementById("transport").value;
     data.fuel = document.getElementById("fuel").value;
     data.throttle = document.getElementById("throttle").value;
@@ -364,9 +364,7 @@ function readControls()
     data.handling = document.getElementById("handling").value;
     data.minSpeed = document.getElementById("minSpeed").value;
     data.maxSpeed = document.getElementById("maxSpeed").value;
-    data.maxAltitude = document.getElementById("maxAltitude").value;
-
-    
+    data.maxAltitude = document.getElementById("maxAltitude").value;    
     
     data.pointCost = document.getElementById("pointCost").value;
     data.weapon1 = readWeaponControls("#weapon1");
@@ -413,7 +411,7 @@ render = function(fighterData) {
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
 
-    drawStructure(data.structure);
+    drawStructure(data.pstructure);
     drawTransport(data.transport);
     drawFuel(data.fuel);
     drawThrottle(data.throttle);
@@ -454,7 +452,7 @@ function writeControls(fighterData)
     setModelImageProperties(fighterData.imageProperties);
     $("#fighterName")[0].value = fighterData.fighterName;
     $("#fighterName2")[0].value = fighterData.fighterName2;
-    $("#structure")[0].value = fighterData.structure;
+    $("#structure")[0].value = fighterData.pstructure;
     $("#transport")[0].value = fighterData.transport;
     $("#fuel")[0].value = fighterData.fuel;
     $("#throttle")[0].value = fighterData.throttle;
@@ -476,7 +474,7 @@ function defaultFighterData() {
     fighterData.fighterName = "Name";
     fighterData.fighterName2 = "subtitle";
     
-    fighterData.structure = 0;
+    fighterData.pstructure = 0;
     fighterData.transport = 0;
     fighterData.fuel = 0;
     fighterData.throttle = 0;
