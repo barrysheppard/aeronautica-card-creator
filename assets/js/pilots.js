@@ -73,7 +73,11 @@ drawPilotText = function(value) {
     getContext().font = '12px helvetica';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 10, y: 170});
+	
+    var lines = value.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+        writeScaled(lines[i], {x: 10, y: 170.y+(i*35) } );
+    }
 }
 
 function getLabel(element)
