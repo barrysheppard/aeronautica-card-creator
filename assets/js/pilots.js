@@ -57,14 +57,14 @@ drawCardElementFromInputId = function(inputId, pixelPosition) {
 
 drawPilotTitle = function(value) {
     getContext().font = '9px rodchenkoctt';
-    getContext().fillStyle = 'black';
+    getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'left';
     writeScaled(value, {x: 20, y: 145});
 }
 
 drawPilotName = function(value) {
     getContext().font = '14px rodchenkoctt';
-    getContext().fillStyle = 'black';
+    getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'left';
     writeScaled(value, {x: 20, y: 158});
 }
