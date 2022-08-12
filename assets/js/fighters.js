@@ -114,7 +114,7 @@ drawMaxAltitude = function(value) {
 
 drawPointCost = function(value) {
     getContext().fillStyle = 'black';
-    writeScaled(value, {x: 1500, y: 160});
+    writeScaled(value, {x: 1550, y: 150});
 }
 
 
@@ -409,7 +409,7 @@ render = function(fighterData) {
     
     
 
-    getContext().font = "40px rodchenkoctt";
+    getContext().font = "50px rodchenkoctt";
     getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
