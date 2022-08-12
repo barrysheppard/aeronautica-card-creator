@@ -413,17 +413,15 @@ render = function(fighterData) {
     getContext().textAlign = "left";
 
     
-    drawPointCost(fighterData.pointCost);
-    
-    drawTransport(data.transport);
-    drawStructure(data.pstructure);
-    drawFuel(data.fuel);
-    drawThrottle(data.throttle);
-    drawAceManoeuvres(data.aceManoeuvres);
-    drawHandling(data.handling);
-    drawMinSpeed(data.minSpeed);
-    drawMaxSpeed(data.maxSpeed);
-    drawMaxAltitude(data.maxAltitude);    
+    drawTransport(fighterData.transport);
+    drawStructure(fighterData.pstructure);
+    drawFuel(fighterData.fuel);
+    drawThrottle(fighterData.throttle);
+    drawAceManoeuvres(fighterData.aceManoeuvres);
+    drawHandling(fighterData.handling);
+    drawMinSpeed(fighterData.minSpeed);
+    drawMaxSpeed(fighterData.maxSpeed);
+    drawMaxAltitude(fighterData.maxAltitude);    
     
     
 
@@ -432,6 +430,9 @@ render = function(fighterData) {
     getContext().textAlign = "left";
     getContext().fillStyle = "black";
     
+    
+    
+    drawPointCost(fighterData.pointCost);
 
     if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
     {
