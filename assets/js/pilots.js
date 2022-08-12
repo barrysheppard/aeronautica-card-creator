@@ -159,6 +159,23 @@ function setModelImageProperties(modelImageProperties)
 }
 
 
+function drawModel(imageUrl, imageProps)
+{
+    if (imageUrl != null)
+    {
+        var image = new Image();
+        image.onload = function(){
+            var position = scalePixelPosition({x: 590 + imageProps.offsetX, y: imageProps.offsetY});
+            var scale = imageProps.scalePercent/100.0;
+            var width = image.width * scale;
+            var height = image.height * scale;
+            getContext().drawImage(image, position.x, position.y, width, height);
+
+            URL.revokeObjectURL(image.src);
+        };
+        image.src = imageUrl;
+    }
+}
 
 function getName()
 {
