@@ -166,11 +166,11 @@ drawWeapon = function(weaponData, pixelPosition) {
 
     writeScaled(
         weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong,
-        {x: pixelPosition.x + 722, y: statsPosY});
+        {x: pixelPosition.x + 720, y: statsPosY});
 
     writeScaled(
         weaponData.damage + "+",
-        {x: pixelPosition.x + 875, y: statsPosY});    
+        {x: pixelPosition.x + 870, y: statsPosY});    
 
     writeScaled(
         weaponData.ammo,
@@ -470,16 +470,16 @@ render = function(fighterData) {
     
     if (fighterData.weapon1.enabled && fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 100, y: 820}); // Default was x:29, y:397
-        drawWeapon(fighterData.weapon2, {x: 100, y: 870}); // Default was x:29, y:564
+        drawWeapon(fighterData.weapon1, {x: 100, y: 820}); 
+        drawWeapon(fighterData.weapon2, {x: 100, y: 873}); 
     }
     else if (fighterData.weapon1.enabled)
     {
-        drawWeapon(fighterData.weapon1, {x: 100, y: 820}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon1, {x: 100, y: 820});
     }
     else if (fighterData.weapon2.enabled)
     {
-        drawWeapon(fighterData.weapon2, {x: 100, y: 820}); // Default was x:29, y:463
+        drawWeapon(fighterData.weapon2, {x: 100, y: 820});
     }
 }
 
