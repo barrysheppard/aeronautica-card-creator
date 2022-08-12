@@ -267,7 +267,7 @@ render = function(cardData) {
     {
         var image = new Image();
         image.onload = function(){
-            var position = scalePixelPosition({x: 590 + cardData.imageProperties.offsetX, y: cardData.imageProperties.offsetY});
+            var position = scalePixelPosition({x: cardData.imageProperties.offsetX, y: cardData.imageProperties.offsetY});
             var scale = cardData.imageProperties.scalePercent/100.0;
             var width = image.width * scale;
             var height = image.height * scale;
