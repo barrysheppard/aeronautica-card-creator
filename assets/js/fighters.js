@@ -291,12 +291,14 @@ function getDefaultWeaponData()
 {
     var weaponData = new Object;
     weaponData.enabled = true;
-    weaponData.rangeMin = 0;
-    weaponData.rangeMax = 1;
-    weaponData.attacks = 1;
-    weaponData.strength = 3;
-    weaponData.damageBase = 1;
-    weaponData.damageCrit = 2;
+    weaponData.name = " ";
+    weaponData.fireArc = "Front";
+    weaponData.fbrShort = 1;
+    weaponData.fbrMed = 2;
+    weaponData.fbrLong = 3;
+    weaponData.damage = 2;
+    weaponData.ammo = "UL";
+    weaponData.special = " ";
     return weaponData;
 }
 
@@ -318,13 +320,15 @@ function readWeaponControls(weaponId)
 {
     var weaponData = new Object;
     var weaponDiv = $(weaponId);
-    weaponData.enabled = weaponDiv.find("#weaponEnabled")[0].checked;
-    weaponData.rangeMin = weaponDiv.find("#rangeMin")[0].value;
-    weaponData.rangeMax = weaponDiv.find("#rangeMax")[0].value;
-    weaponData.attacks = weaponDiv.find("#attacks")[0].value;
-    weaponData.strength = weaponDiv.find("#strength")[0].value;
-    weaponData.damageBase = weaponDiv.find("#damageBase")[0].value;
-    weaponData.damageCrit = weaponDiv.find("#damageCrit")[0].value;
+    weaponData.enabled = weaponDiv.find("#weaponEnabled")[0].checked;    
+    weaponData.name = weaponDiv.find("#name")[0].value;
+    weaponData.fireArc = weaponDiv.find("#fireArc")[0].value;
+    weaponData.fbrShort = weaponDiv.find("#fbrShort")[0].value;
+    weaponData.fbrMed = weaponDiv.find("#fbrMed")[0].value;
+    weaponData.fbrLong = weaponDiv.find("#fbrLong")[0].value;
+    weaponData.damage = weaponDiv.find("#damage")[0].value;
+    weaponData.ammo = weaponDiv.find("#ammo")[0].value;
+    weaponData.special = weaponDiv.find("#special")[0].value;
     return weaponData;
 }
 
@@ -333,12 +337,15 @@ function writeWeaponControls(weaponId, weaponData, weaponName)
     weaponDiv = $(weaponId);
     weaponDiv.find("#weaponEnabled")[0].checked = weaponData.enabled;
     weaponDiv.find("#weaponInputs")[0].style.display = weaponData.enabled ? "block" : "none";
-    weaponDiv.find("#rangeMin")[0].value = weaponData.rangeMin;
-    weaponDiv.find("#rangeMax")[0].value = weaponData.rangeMax;
-    weaponDiv.find("#attacks")[0].value = weaponData.attacks;
-    weaponDiv.find("#strength")[0].value = weaponData.strength;
-    weaponDiv.find("#damageBase")[0].value = weaponData.damageBase;
-    weaponDiv.find("#damageCrit")[0].value = weaponData.damageCrit;
+        
+    weaponDiv.find("#name")[0].value = weaponData.name;
+    weaponDiv.find("#fireArc")[0].value = weaponData.fireArc;
+    weaponDiv.find("#fbrShort")[0].value = weaponData.fbrShort;
+    weaponDiv.find("#fbrMed")[0].value = weaponData.fbrMed;
+    weaponDiv.find("#fbrLong")[0].value = weaponData.fbrLong;
+    weaponDiv.find("#damage")[0].value = weaponData.damage;
+    weaponDiv.find("#ammo")[0].value = weaponData.ammo;
+    weaponDiv.find("#special")[0].value = weaponData.special;
 }
 
 
