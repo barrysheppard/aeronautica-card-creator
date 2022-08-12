@@ -121,24 +121,8 @@ drawPointCost = function(value) {
 
 // Weapon Stats
 
-getWeaponStatblockImage = function() {
-    return document.getElementById("weapon-profile");
-}
-
-drawWeaponStatblock = function(pixelPosition) {
-    var image = getWeaponStatblockImage();
-    var scaledPosition = scalePixelPosition(pixelPosition);
-    var scaledSize = scalePixelPosition({x: image.width, y: image.height});
-    getContext().drawImage(
-        image,
-        scaledPosition.x,
-        scaledPosition.y,
-        scaledSize.x,
-        scaledSize.y);
-}
 
 drawWeapon = function(weaponData, pixelPosition) {
-    drawWeaponStatblock(pixelPosition);
 
     var statsPosY = pixelPosition.y + 95;
 
