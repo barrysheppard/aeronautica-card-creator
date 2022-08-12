@@ -117,6 +117,49 @@ function drawImageSrc(scaledPosition, scaledSize, imageSrc)
 }
 
 
+
+function setModelImage(image)
+{
+    var imageSelect = $("#imageSelect")[0];
+
+    if (image != null)
+    {
+        // TODO: Not sure how to do this. It might not even be possible! Leave it for now...
+        // imageSelect.files[0] = image;
+    }
+    else
+    {
+        imageSelect.value = null;
+    }
+}
+
+function getDefaultModelImageProperties()
+{
+    return {
+        offsetX: 0,
+        offsetY: 0,
+        scalePercent: 100
+    };
+}
+
+function getModelImageProperties()
+{
+    return {
+        offsetX: $("#imageOffsetX")[0].valueAsNumber,
+        offsetY: $("#imageOffsetY")[0].valueAsNumber,
+        scalePercent: $("#imageScalePercent")[0].valueAsNumber
+    };
+}
+
+function setModelImageProperties(modelImageProperties)
+{
+    $("#imageOffsetX")[0].value = modelImageProperties.offsetX;
+    $("#imageOffsetY")[0].value = modelImageProperties.offsetY;
+    $("#imageScalePercent")[0].value = modelImageProperties.scalePercent;
+}
+
+
+
 function getName()
 {
     var textInput = $("#saveNameInput")[0];
@@ -158,8 +201,8 @@ render = function(cardData) {
 function writeControls(cardData)
 {
     setName(cardData.name);
-    // setModelImage(cardData.imageUrl);
-    // setModelImageProperties(cardData.imageProperties);
+    setModelImage(cardData.imageUrl);
+    setModelImageProperties(cardData.imageProperties);
 
     $('#pilot-title').value = cardData.pilotTitle;
     $('#pilot-name').value = cardData.pilotName;
@@ -169,8 +212,8 @@ function writeControls(cardData)
 function defaultCardData() {
     var cardData = new Object;
     cardData.name = 'Default';
-    // cardData.imageUrl = null;
-    // cardData.imageProperties = getDefaultModelImageProperties();
+    cardData.imageUrl = null;
+    cardData.imageProperties = getDefaultModelImageProperties();
 
     cardData.pilotName = 'Lord Flashheart';
     cardData.pilotTitle = 'Wing Commander';
