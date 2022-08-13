@@ -248,12 +248,13 @@ render = function (cardData) {
             // These are the texts to overlay
 
             URL.revokeObjectURL(image.src);
+            overlayImage = document.getElementById('aeronautica_pilot_overlay');
+            getContext().drawImage(
+                overlayImage, 0, 0, getCanvas().width, getCanvas().height);
         };
         image.src = cardData.imageUrl;
     }
-    overlayImage = document.getElementById('aeronautica_pilot_overlay');
-    getContext().drawImage(
-        overlayImage, 0, 0, getCanvas().width, getCanvas().height);
+
 
     drawPilotTitle(cardData.pilotTitle);
     drawPilotName(cardData.pilotName);
