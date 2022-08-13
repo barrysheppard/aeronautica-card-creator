@@ -57,24 +57,24 @@ drawCardElementFromInputId = function (inputId, pixelPosition) {
 
 
 drawWeaponName = function (value) {
-    getContext().font = '40px rodchenkoctt';
+    getContext().font = '50px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 120, y: 40 });
+    writeScaled(value, { x: 300, y: 30 });
 }
 
 drawWeaponTitle = function (value) {
     getContext().font = '20px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'centre';
-    writeScaled(value, { x: 120, y: 60 });
+    writeScaled(value, { x: 300, y: 60 });
 }
 
 
 // Weapon Stats
 
 drawWeaponFireArc = function (value) {
-    writeScaled(value, { x: 30, y: 300 });
+    writeScaled(value, { x: 40, y: 350 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -87,7 +87,7 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
     }
     writeScaled(
         fbr,
-        { x: 70, y: 300 });
+        { x: 200, y: 350 });
 }
 
 drawWeaponDamage = function (damage) {
@@ -100,16 +100,16 @@ drawWeaponDamage = function (damage) {
     }
     writeScaled(
         dmg,
-        { x: 110, y: 300 });
+        { x: 240, y: 350 });
 
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 150, y: 300 });
+    writeScaled(value, { x: 280, y: 350 });
 }
 
 drawWeaponSpecial = function (value) {
-    writeScaled(value, { x: 190, y: 300 });
+    writeScaled(value, { x: 320, y: 350 });
 }
 
 
