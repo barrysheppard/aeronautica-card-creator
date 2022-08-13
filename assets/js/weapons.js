@@ -94,7 +94,7 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
 drawWeaponDamage = function (damage) {
     // value shows dice roll, e.g. 5+ so the + gets added
     writeScaled(
-        dmg + "+",
+        damage + "+",
         { x: 240, y: 350 });
 }
 
@@ -339,7 +339,7 @@ function defaultCardData() {
     cardData.fbrLong = 3;
     cardData.damage = 2;
     cardData.ammo = "UL";
-    cardData.special = " ";
+    cardData.special = "Special Text";
 
     return cardData;
 }
