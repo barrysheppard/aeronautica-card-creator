@@ -66,7 +66,6 @@ drawPilotName = function (value) {
     getContext().font = '14px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    getContext().rotate(-Math.PI / 2);
     writeScaled(value, { x: 88, y: 153 });
 }
 
@@ -252,8 +251,10 @@ render = function (cardData) {
             overlayImage = document.getElementById('aeronautica_pilot_overlay');
             getContext().drawImage(
                 overlayImage, 0, 0, getCanvas().width, getCanvas().height);
+            getContext().rotate(20 * Math.PI / 180);
             drawPilotTitle(cardData.pilotTitle);
             drawPilotName(cardData.pilotName);
+            getContext().rotate(-20 * Math.PI / 180);
             drawPilotText(cardData.pilotText);
         };
         image.src = cardData.imageUrl;
@@ -261,8 +262,10 @@ render = function (cardData) {
         overlayImage = document.getElementById('aeronautica_pilot_overlay');
         getContext().drawImage(
             overlayImage, 0, 0, getCanvas().width, getCanvas().height);
+        getContext().rotate(20 * Math.PI / 180);
         drawPilotTitle(cardData.pilotTitle);
         drawPilotName(cardData.pilotName);
+        getContext().rotate(-20 * Math.PI / 180);
         drawPilotText(cardData.pilotText);
     }
 
