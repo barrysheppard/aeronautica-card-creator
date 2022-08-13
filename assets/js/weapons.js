@@ -384,8 +384,8 @@ render = function (cardData) {
     drawweaponTitle(cardData.weaponTitle);
     drawweaponName(cardData.weaponName);
 
-    if (fighterData.weapon1.enabled) {
-        drawWeapon(fighterData.weapon1, { x: 100, y: 820 });
+    if (card.weapon1.enabled) {
+        drawWeapon(card.weapon1, { x: 100, y: 820 });
     }
 
 };
