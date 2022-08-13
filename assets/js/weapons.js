@@ -60,21 +60,22 @@ drawWeaponName = function (value) {
     getContext().font = '50px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 300, y: 30 });
+    writeScaled(value, { x: 257, y: 30 });
 }
 
 drawWeaponTitle = function (value) {
     getContext().font = '20px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
-    getContext().textAlign = 'centre';
-    writeScaled(value, { x: 300, y: 60 });
+    getContext().textAlign = 'center';
+    writeScaled(value, { x: 257, y: 60 });
 }
 
 
 // Weapon Stats
 
 drawWeaponFireArc = function (value) {
-    writeScaled(value, { x: 40, y: 350 });
+    getContext().textAlign = 'center';
+    writeScaled(value, { x: 45, y: 350 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -87,7 +88,7 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
     }
     writeScaled(
         fbr,
-        { x: 200, y: 350 });
+        { x: 150, y: 350 });
 }
 
 drawWeaponDamage = function (damage) {
