@@ -59,14 +59,14 @@ drawweaponTitle = function (value) {
     getContext().font = '9px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'left';
-    writeScaled(value, { x: 20, y: 140 });
+    writeScaled(value, { x: 20, y: 40 });
 }
 
 drawweaponName = function (value) {
     getContext().font = '14px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 88, y: 153 });
+    writeScaled(value, { x: 20, y: 60 });
 }
 
 
@@ -75,15 +75,11 @@ drawweaponName = function (value) {
 
 drawWeapon = function (weaponData, pixelPosition) {
 
-    var statsPosY = pixelPosition.y + 95;
-
-    writeScaled(
-        weaponData.weaponName,
-        { x: pixelPosition.x + 0, y: statsPosY });
+    var statsPosY = pixelPosition.y + 0;
 
     writeScaled(
         weaponData.fireArc,
-        { x: pixelPosition.x + 450, y: statsPosY });
+        { x: pixelPosition.x + 0, y: statsPosY });
 
     if (weaponData.fbrShort == 0 && weaponData.fbrMed == 0 && weaponData.fbrLong == 0) {
         fbr = " ";
@@ -93,7 +89,7 @@ drawWeapon = function (weaponData, pixelPosition) {
     }
     writeScaled(
         fbr,
-        { x: pixelPosition.x + 720, y: statsPosY });
+        { x: pixelPosition.x + 10, y: statsPosY });
 
     if (weaponData.damage == 0) {
         dmg = " ";
@@ -103,24 +99,17 @@ drawWeapon = function (weaponData, pixelPosition) {
     }
     writeScaled(
         dmg,
-        { x: pixelPosition.x + 870, y: statsPosY });
+        { x: pixelPosition.x + 20, y: statsPosY });
 
     writeScaled(
         weaponData.ammo,
-        { x: pixelPosition.x + 1005, y: statsPosY });
+        { x: pixelPosition.x + 30, y: statsPosY });
 
     writeScaled(
         weaponData.special,
-        { x: pixelPosition.x + 1100, y: statsPosY });
-
-
-    //var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
-    //var size = scalePixelPosition({x: 120, y: 120});
+        { x: pixelPosition.x + 40, y: statsPosY });
 }
 
-function getWeapon(weaponId) {
-    return $(weaponId).find("#weaponEnabled")[0].checked ? $(weaponId) : null;
-}
 
 function getWeapon1() {
     return getWeapon("#weapon1");
@@ -137,7 +126,6 @@ function getLabel(element) {
 function getImage(element) {
     return $(element).find("img")[0];
 }
-
 
 function drawImage(scaledPosition, scaledSize, image) {
     if (image != null) {
@@ -157,8 +145,6 @@ function drawImageSrc(scaledPosition, scaledSize, imageSrc) {
         image.src = imageSrc;
     }
 }
-
-
 
 function setModelImage(image) {
     var imageSelect = $("#imageSelect")[0];
@@ -194,7 +180,6 @@ function setModelImageProperties(modelImageProperties) {
     $("#imageScalePercent")[0].value = modelImageProperties.scalePercent;
 }
 
-
 function drawModel(imageUrl, imageProps) {
     if (imageUrl != null) {
         var image = new Image();
@@ -204,7 +189,6 @@ function drawModel(imageUrl, imageProps) {
             var width = image.width * scale;
             var height = image.height * scale;
             getContext().drawImage(image, position.x, position.y, width, height);
-
             URL.revokeObjectURL(image.src);
         };
         image.src = imageUrl;
@@ -232,8 +216,6 @@ function getModelImage() {
 }
 
 
-
-
 function setModelImage(image) {
     var imageSelect = $("#imageSelect")[0];
 
@@ -269,14 +251,11 @@ function setModelImageProperties(modelImageProperties) {
 }
 
 
-
 // begin weapons
 
 
 function getDefaultWeaponData() {
     var weaponData = new Object;
-    weaponData.enabled = true;
-    weaponData.weaponName = " ";
     weaponData.fireArc = "Front";
     weaponData.fbrShort = 1;
     weaponData.fbrMed = 2;
@@ -293,31 +272,10 @@ function getDefaultWeaponData1() {
     return data;
 }
 
-function getDefaultWeaponData2() {
-    var data = getDefaultWeaponData();
-    data.enabled = false;
-    return data;
-}
-
-
-function getDefaultWeaponData3() {
-    var data = getDefaultWeaponData();
-    data.enabled = false;
-    return data;
-}
-
-function getDefaultWeaponData4() {
-    var data = getDefaultWeaponData();
-    data.enabled = false;
-    return data;
-}
-
 
 function readWeaponControls(weaponId) {
     var weaponData = new Object;
     var weaponDiv = $(weaponId);
-    weaponData.enabled = weaponDiv.find("#weaponEnabled")[0].checked;
-    weaponData.weaponName = weaponDiv.find("#weaponName")[0].value;
     weaponData.fireArc = weaponDiv.find("#fireArc")[0].value;
     weaponData.fbrShort = weaponDiv.find("#fbrShort")[0].value;
     weaponData.fbrMed = weaponDiv.find("#fbrMed")[0].value;
@@ -330,10 +288,7 @@ function readWeaponControls(weaponId) {
 
 function writeWeaponControls(weaponId, weaponData, weaponName) {
     weaponDiv = $(weaponId);
-    weaponDiv.find("#weaponEnabled")[0].checked = weaponData.enabled;
     weaponDiv.find("#weaponInputs")[0].style.display = weaponData.enabled ? "block" : "none";
-
-    weaponDiv.find("#weaponName")[0].value = weaponData.weaponName;
     weaponDiv.find("#fireArc")[0].value = weaponData.fireArc;
     weaponDiv.find("#fbrShort")[0].value = weaponData.fbrShort;
     weaponDiv.find("#fbrMed")[0].value = weaponData.fbrMed;
@@ -380,13 +335,9 @@ render = function (cardData) {
         image.src = cardData.imageUrl;
     }
 
-
     drawweaponTitle(cardData.weaponTitle);
     drawweaponName(cardData.weaponName);
-
-    if (card.weapon1.enabled) {
-        drawWeapon(card.weapon1, { x: 100, y: 820 });
-    }
+    drawWeapon(card.weapon1, { x: 10, y: 10 });
 
 };
 
