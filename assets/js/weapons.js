@@ -355,7 +355,6 @@ function readControls() {
 
     data.weaponTitle = document.getElementById('weapon-title').value;
     data.weaponName = document.getElementById('weapon-name').value;
-    data.weaponText = document.getElementById('weapon-text').value;
     data.weapon1 = readWeaponControls("#weapon1");
     return data;
 }
@@ -398,7 +397,6 @@ function writeControls(cardData) {
 
     $('#weapon-title').value = cardData.weaponTitle;
     $('#weapon-name').value = cardData.weaponName;
-    $('#weapon-text').value = cardData.weaponText;
 }
 
 function defaultCardData() {
@@ -409,7 +407,6 @@ function defaultCardData() {
 
     cardData.weaponName = 'Lord Flashheart';
     cardData.weaponTitle = 'Wing Commander';
-    cardData.weaponText = 'This is the text';
 
     return cardData;
 }
