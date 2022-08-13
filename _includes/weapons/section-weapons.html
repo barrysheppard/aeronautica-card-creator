@@ -22,23 +22,23 @@
                     <div class="col-sm-4 form-group">
                         <label for="fbrShort">Short</label>
                         <input class="form-control" type="number" id="fbrShort" name="fbrShort" min="0" max="999"
-                            value="0" oninput="onAnyChange()">
+                            value="1" oninput="onAnyChange()">
                     </div>
                     <div class="col-sm-4 form-group">
                         <label for="fbrMed">Medium</label>
-                        <input class="form-control" type="number" id="fbrMed" name="fbrMed" min="0" max="999" value="1"
+                        <input class="form-control" type="number" id="fbrMed" name="fbrMed" min="0" max="999" value="2"
                             oninput="onAnyChange()">
                     </div>
                     <div class="col-sm-4 form-group">
                         <label for="fbrLong">Long</label>
                         <input class="form-control" type="number" id="fbrLong" name="fbrLong" min="0" max="999"
-                            value="1" oninput="onAnyChange()">
+                            value="3" oninput="onAnyChange()">
                     </div>
                 </div>
                 <div class="form-row mt-4">
                     <div class="col-sm-4 form-group">
                         <label for="damage">Damage</label>
-                        <input class="form-control" type="number" id="damage" name="damage" min="0" max="999" value="0"
+                        <input class="form-control" type="number" id="damage" name="damage" min="0" max="999" value="2"
                             oninput="onAnyChange()">
                     </div>
                     <div class="col-sm-4 form-group">
@@ -49,8 +49,8 @@
                 </div>
                 <div class="form-group">
                     <label for="special">Special</label>
-                    <input class="form-control" type="text" id="special" name="special" value=" "
-                        oninput="onAnyChange()">
+                    <textarea class="form-control" id="special" name="special" rows="2"
+                        oninput="onAnyChange()">Special Text</textarea>
                 </div>
             </div>
         </div>
