@@ -337,7 +337,7 @@ render = function (cardData) {
 
     drawweaponTitle(cardData.weaponTitle);
     drawweaponName(cardData.weaponName);
-    drawWeapon(card.weapon1, { x: 10, y: 10 });
+    drawWeapon(cardData.weapon1, { x: 10, y: 10 });
 
 };
 
