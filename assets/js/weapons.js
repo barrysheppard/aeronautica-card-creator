@@ -93,24 +93,18 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
 
 drawWeaponDamage = function (damage) {
     // value shows dice roll, e.g. 5+ so the + gets added
-    if (damage == 0) {
-        dmg = " ";
-    }
-    else {
-        dmg = damage + "+";
-    }
     writeScaled(
-        dmg,
+        dmg + "+",
         { x: 240, y: 350 });
-
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 280, y: 350 });
+    writeScaled(value, { x: 300, y: 350 });
 }
 
 drawWeaponSpecial = function (value) {
-    writeScaled(value, { x: 320, y: 350 });
+    getContext().textAlign = 'left';
+    writeScaled(value, { x: 400, y: 350 });
 }
 
 
