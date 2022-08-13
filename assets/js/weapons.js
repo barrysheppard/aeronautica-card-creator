@@ -1,6 +1,6 @@
-writeValue = function(ctx, value, pos) {
+writeValue = function (ctx, value, pos) {
     var scale = getScalingFactor(getCanvas(), getBackgroundImage());
-    pos = {x: pos.x / scale.x, y: pos.y / scale.y };
+    pos = { x: pos.x / scale.x, y: pos.y / scale.y };
 
     ctx.save();
     ctx.scale(scale.x, scale.y);
@@ -8,133 +8,194 @@ writeValue = function(ctx, value, pos) {
     ctx.restore();
 }
 
-getScalingFactor = function(canvas, warcryCardOne) {
+getScalingFactor = function (canvas, warcryCardOne) {
     return {
-        x: canvas.width  / warcryCardOne.width,
+        x: canvas.width / warcryCardOne.width,
         y: canvas.height / warcryCardOne.height
     };
 }
 
-getCanvas = function() {
+getCanvas = function () {
     return document.getElementById("canvas");
 }
 
-getContext = function() {
+getContext = function () {
     return getCanvas().getContext("2d");
 }
 
-getBackgroundImage = function() {
+getBackgroundImage = function () {
     if (document.getElementById('select_aeronautica_weapon_imperial').checked) {
         return document.getElementById('aeronautica_weapon_imperial');
     }
 
 }
 
-drawBackground = function() {
+drawBackground = function () {
     getContext().drawImage(
         getBackgroundImage(), 0, 0, getCanvas().width, getCanvas().height);
 }
 
-scalePixelPosition = function(pixelPosition) {
+scalePixelPosition = function (pixelPosition) {
     var scalingFactor = getScalingFactor(getCanvas(), getBackgroundImage());
-    var scaledPosition = {x: pixelPosition.x * scalingFactor.x, y: pixelPosition.y * scalingFactor.y};
+    var scaledPosition = { x: pixelPosition.x * scalingFactor.x, y: pixelPosition.y * scalingFactor.y };
     return scaledPosition;
 }
 
-writeScaled = function(value, pixelPos) {
+writeScaled = function (value, pixelPos) {
     var scaledPos = scalePixelPosition(pixelPos);
     writeValue(getContext(), value, scaledPos);
 }
 
-drawCardElementFromInput = function(inputElement, pixelPosition) {
+drawCardElementFromInput = function (inputElement, pixelPosition) {
     var value = inputElement.value;
     writeScaled(value, pixelPosition);
 }
 
-drawCardElementFromInputId = function(inputId, pixelPosition) {
+drawCardElementFromInputId = function (inputId, pixelPosition) {
     drawCardElementFromInput(document.getElementById(inputId), pixelPosition);
 }
 
-drawweaponTitle = function(value) {
+drawweaponTitle = function (value) {
     getContext().font = '9px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'left';
-    writeScaled(value, {x: 20, y: 140});
+    writeScaled(value, { x: 20, y: 140 });
 }
 
-drawweaponName = function(value) {
+drawweaponName = function (value) {
     getContext().font = '14px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, {x: 88, y: 153});
+    writeScaled(value, { x: 88, y: 153 });
 }
 
-drawweaponText = function(value) {
+drawweaponText = function (value) {
     getContext().font = '9px helvetica';
     getContext().fillStyle = 'black';
     getContext().textAlign = 'left';
 
     var lines = value.split('\n');
     for (var i = 0; i < lines.length; i++) {
-        writeScaled(lines[i], {x: 20, y: 180+(i*10) } );
+        writeScaled(lines[i], { x: 20, y: 180 + (i * 10) });
     }
 }
 
-function getLabel(element)
-{
+
+// Weapon Stats
+
+
+drawWeapon = function (weaponData, pixelPosition) {
+
+    var statsPosY = pixelPosition.y + 95;
+
+    writeScaled(
+        weaponData.weaponName,
+        { x: pixelPosition.x + 0, y: statsPosY });
+
+    writeScaled(
+        weaponData.fireArc,
+        { x: pixelPosition.x + 450, y: statsPosY });
+
+    if (weaponData.fbrShort == 0 && weaponData.fbrMed == 0 && weaponData.fbrLong == 0) {
+        fbr = " ";
+    }
+    else {
+        fbr = weaponData.fbrShort + "-" + weaponData.fbrMed + "-" + weaponData.fbrLong;
+    }
+    writeScaled(
+        fbr,
+        { x: pixelPosition.x + 720, y: statsPosY });
+
+    if (weaponData.damage == 0) {
+        dmg = " ";
+    }
+    else {
+        dmg = weaponData.damage + "+";
+    }
+    writeScaled(
+        dmg,
+        { x: pixelPosition.x + 870, y: statsPosY });
+
+    writeScaled(
+        weaponData.ammo,
+        { x: pixelPosition.x + 1005, y: statsPosY });
+
+    writeScaled(
+        weaponData.special,
+        { x: pixelPosition.x + 1100, y: statsPosY });
+
+
+    //var position = scalePixelPosition({x: pixelPosition.x + 20, y: pixelPosition.y + 30});
+    //var size = scalePixelPosition({x: 120, y: 120});
+}
+
+function getWeapon(weaponId) {
+    return $(weaponId).find("#weaponEnabled")[0].checked ? $(weaponId) : null;
+}
+
+function getWeapon1() {
+    return getWeapon("#weapon1");
+}
+
+function getWeapon2() {
+    return getWeapon("#weapon2");
+}
+
+function getWeapon3() {
+    return getWeapon("#weapon3");
+}
+
+function getWeapon4() {
+    return getWeapon("#weapon4");
+}
+
+// End Weapons
+
+
+
+function getLabel(element) {
     return $(element).prop("labels")[0];
 }
 
-function getImage(element)
-{
+function getImage(element) {
     return $(element).find("img")[0];
 }
 
 
-function drawImage(scaledPosition, scaledSize, image)
-{
-    if (image != null)
-    {
-        if (image.complete)
-        {
+function drawImage(scaledPosition, scaledSize, image) {
+    if (image != null) {
+        if (image.complete) {
             getContext().drawImage(image, scaledPosition.x, scaledPosition.y, scaledSize.x, scaledSize.y);
         }
-        else
-        {
-            image.onload = function(){ drawImage(scaledPosition, scaledSize, image); };
+        else {
+            image.onload = function () { drawImage(scaledPosition, scaledSize, image); };
         }
     }
 }
 
-function drawImageSrc(scaledPosition, scaledSize, imageSrc)
-{
-    if (imageSrc != null)
-    {
+function drawImageSrc(scaledPosition, scaledSize, imageSrc) {
+    if (imageSrc != null) {
         var image = new Image();
-        image.onload = function(){ drawImage(scaledPosition, scaledSize, image); };
+        image.onload = function () { drawImage(scaledPosition, scaledSize, image); };
         image.src = imageSrc;
     }
 }
 
 
 
-function setModelImage(image)
-{
+function setModelImage(image) {
     var imageSelect = $("#imageSelect")[0];
 
-    if (image != null)
-    {
+    if (image != null) {
         // TODO: Not sure how to do this. It might not even be possible! Leave it for now...
         // imageSelect.files[0] = image;
     }
-    else
-    {
+    else {
         imageSelect.value = null;
     }
 }
 
-function getDefaultModelImageProperties()
-{
+function getDefaultModelImageProperties() {
     return {
         offsetX: 0,
         offsetY: 0,
@@ -142,8 +203,7 @@ function getDefaultModelImageProperties()
     };
 }
 
-function getModelImageProperties()
-{
+function getModelImageProperties() {
     return {
         offsetX: $("#imageOffsetX")[0].valueAsNumber,
         offsetY: $("#imageOffsetY")[0].valueAsNumber,
@@ -151,22 +211,19 @@ function getModelImageProperties()
     };
 }
 
-function setModelImageProperties(modelImageProperties)
-{
+function setModelImageProperties(modelImageProperties) {
     $("#imageOffsetX")[0].value = modelImageProperties.offsetX;
     $("#imageOffsetY")[0].value = modelImageProperties.offsetY;
     $("#imageScalePercent")[0].value = modelImageProperties.scalePercent;
 }
 
 
-function drawModel(imageUrl, imageProps)
-{
-    if (imageUrl != null)
-    {
+function drawModel(imageUrl, imageProps) {
+    if (imageUrl != null) {
         var image = new Image();
-        image.onload = function(){
-            var position = scalePixelPosition({x: imageProps.offsetX, y: imageProps.offsetY});
-            var scale = imageProps.scalePercent/100.0;
+        image.onload = function () {
+            var position = scalePixelPosition({ x: imageProps.offsetX, y: imageProps.offsetY });
+            var scale = imageProps.scalePercent / 100.0;
             var width = image.width * scale;
             var height = image.height * scale;
             getContext().drawImage(image, position.x, position.y, width, height);
@@ -177,24 +234,20 @@ function drawModel(imageUrl, imageProps)
     }
 }
 
-function getName()
-{
+function getName() {
     var textInput = $("#saveNameInput")[0];
     return textInput.value;
 }
 
-function setName(name)
-{
+function setName(name) {
     var textInput = $("#saveNameInput")[0];
     textInput.value = name;
 }
 
-function getModelImage()
-{
+function getModelImage() {
     var imageSelect = $("#imageSelect")[0];
 
-    if (imageSelect.files.length > 0)
-    {
+    if (imageSelect.files.length > 0) {
         return URL.createObjectURL(imageSelect.files[0]);
     }
 
@@ -204,23 +257,19 @@ function getModelImage()
 
 
 
-function setModelImage(image)
-{
+function setModelImage(image) {
     var imageSelect = $("#imageSelect")[0];
 
-    if (image != null)
-    {
+    if (image != null) {
         // TODO: Not sure how to do this. It might not even be possible! Leave it for now...
         // imageSelect.files[0] = image;
     }
-    else
-    {
+    else {
         imageSelect.value = null;
     }
 }
 
-function getDefaultModelImageProperties()
-{
+function getDefaultModelImageProperties() {
     return {
         offsetX: 0,
         offsetY: 0,
@@ -228,8 +277,7 @@ function getDefaultModelImageProperties()
     };
 }
 
-function getModelImageProperties()
-{
+function getModelImageProperties() {
     return {
         offsetX: $("#imageOffsetX")[0].valueAsNumber,
         offsetY: $("#imageOffsetY")[0].valueAsNumber,
@@ -237,16 +285,92 @@ function getModelImageProperties()
     };
 }
 
-function setModelImageProperties(modelImageProperties)
-{
+function setModelImageProperties(modelImageProperties) {
     $("#imageOffsetX")[0].value = modelImageProperties.offsetX;
     $("#imageOffsetY")[0].value = modelImageProperties.offsetY;
     $("#imageScalePercent")[0].value = modelImageProperties.scalePercent;
 }
 
 
-function readControls()
-{
+
+// begin weapons
+
+
+function getDefaultWeaponData() {
+    var weaponData = new Object;
+    weaponData.enabled = true;
+    weaponData.weaponName = " ";
+    weaponData.fireArc = "Front";
+    weaponData.fbrShort = 1;
+    weaponData.fbrMed = 2;
+    weaponData.fbrLong = 3;
+    weaponData.damage = 2;
+    weaponData.ammo = "UL";
+    weaponData.special = " ";
+    return weaponData;
+}
+
+function getDefaultWeaponData1() {
+    var data = getDefaultWeaponData();
+    data.enabled = true;
+    return data;
+}
+
+function getDefaultWeaponData2() {
+    var data = getDefaultWeaponData();
+    data.enabled = false;
+    return data;
+}
+
+
+function getDefaultWeaponData3() {
+    var data = getDefaultWeaponData();
+    data.enabled = false;
+    return data;
+}
+
+function getDefaultWeaponData4() {
+    var data = getDefaultWeaponData();
+    data.enabled = false;
+    return data;
+}
+
+
+function readWeaponControls(weaponId) {
+    var weaponData = new Object;
+    var weaponDiv = $(weaponId);
+    weaponData.enabled = weaponDiv.find("#weaponEnabled")[0].checked;
+    weaponData.weaponName = weaponDiv.find("#weaponName")[0].value;
+    weaponData.fireArc = weaponDiv.find("#fireArc")[0].value;
+    weaponData.fbrShort = weaponDiv.find("#fbrShort")[0].value;
+    weaponData.fbrMed = weaponDiv.find("#fbrMed")[0].value;
+    weaponData.fbrLong = weaponDiv.find("#fbrLong")[0].value;
+    weaponData.damage = weaponDiv.find("#damage")[0].value;
+    weaponData.ammo = weaponDiv.find("#ammo")[0].value;
+    weaponData.special = weaponDiv.find("#special")[0].value;
+    return weaponData;
+}
+
+function writeWeaponControls(weaponId, weaponData, weaponName) {
+    weaponDiv = $(weaponId);
+    weaponDiv.find("#weaponEnabled")[0].checked = weaponData.enabled;
+    weaponDiv.find("#weaponInputs")[0].style.display = weaponData.enabled ? "block" : "none";
+
+    weaponDiv.find("#weaponName")[0].value = weaponData.weaponName;
+    weaponDiv.find("#fireArc")[0].value = weaponData.fireArc;
+    weaponDiv.find("#fbrShort")[0].value = weaponData.fbrShort;
+    weaponDiv.find("#fbrMed")[0].value = weaponData.fbrMed;
+    weaponDiv.find("#fbrLong")[0].value = weaponData.fbrLong;
+    weaponDiv.find("#damage")[0].value = weaponData.damage;
+    weaponDiv.find("#ammo")[0].value = weaponData.ammo;
+    weaponDiv.find("#special")[0].value = weaponData.special;
+}
+
+
+// end weapons
+
+
+function readControls() {
     var data = new Object;
     data.name = getName();
     data.imageUrl = getModelImage();
@@ -255,20 +379,20 @@ function readControls()
     data.weaponTitle = document.getElementById('weapon-title').value;
     data.weaponName = document.getElementById('weapon-name').value;
     data.weaponText = document.getElementById('weapon-text').value;
+    data.weapon1 = readWeaponControls("#weapon1");
     return data;
 }
 
 
 
-render = function(cardData) {
+render = function (cardData) {
     drawBackground();
 
-        if (cardData.imageUrl != null)
-    {
+    if (cardData.imageUrl != null) {
         var image = new Image();
-        image.onload = function(){
-            var position = scalePixelPosition({x: cardData.imageProperties.offsetX, y: cardData.imageProperties.offsetY});
-            var scale = cardData.imageProperties.scalePercent/100.0;
+        image.onload = function () {
+            var position = scalePixelPosition({ x: cardData.imageProperties.offsetX, y: cardData.imageProperties.offsetY });
+            var scale = cardData.imageProperties.scalePercent / 100.0;
             var width = image.width * scale;
             var height = image.height * scale;
             getContext().drawImage(image, position.x, position.y, width, height);
@@ -285,10 +409,22 @@ render = function(cardData) {
     drawweaponName(cardData.weaponName);
     drawweaponText(cardData.weaponText);
 
+    if (fighterData.weapon1.enabled) {
+        drawWeapon(fighterData.weapon1, { x: 100, y: 820 });
+    }
+    if (fighterData.weapon2.enabled) {
+        drawWeapon(fighterData.weapon2, { x: 100, y: 873 });
+    }
+    if (fighterData.weapon3.enabled) {
+        drawWeapon(fighterData.weapon3, { x: 100, y: 926 });
+    }
+    if (fighterData.weapon4.enabled) {
+        drawWeapon(fighterData.weapon4, { x: 100, y: 979 });
+    }
+
 };
 
-function writeControls(cardData)
-{
+function writeControls(cardData) {
     setName(cardData.name);
     setModelImage(cardData.imageUrl);
     setModelImageProperties(cardData.imageProperties);
@@ -311,16 +447,13 @@ function defaultCardData() {
     return cardData;
 }
 
-function saveCardDataMap(newMap)
-{
+function saveCardDataMap(newMap) {
     window.localStorage.setItem("cardDataMap", JSON.stringify(newMap));
 }
 
-function loadCardDataMap()
-{
+function loadCardDataMap() {
     var storage = window.localStorage.getItem("cardDataMap");
-    if (storage != null)
-    {
+    if (storage != null) {
         return JSON.parse(storage);
     }
     // Set up the map.
@@ -330,11 +463,9 @@ function loadCardDataMap()
     return map;
 }
 
-function loadLatestCardData()
-{
+function loadLatestCardData() {
     var latestFighterName = window.localStorage.getItem("latestFighterName");
-    if (latestFighterName == null)
-    {
+    if (latestFighterName == null) {
         latestFighterName = "Default";
     }
 
@@ -342,24 +473,20 @@ function loadLatestCardData()
 
     var data = loadCardData(latestFighterName);
 
-    if (data)
-    {
+    if (data) {
         console.log("Loaded data:");
         console.log(data);
     }
-    else
-    {
+    else {
         console.log("Failed to load a fighter data.");
     }
 
     return data;
 }
 
-function saveLatestCardData()
-{
+function saveLatestCardData() {
     var cardData = readControls();
-    if (!cardData.name)
-    {
+    if (!cardData.name) {
         return;
     }
 
@@ -367,16 +494,13 @@ function saveLatestCardData()
     saveCardData(cardData);
 }
 
-function loadCardData(cardDataName)
-{
-    if (!cardDataName)
-    {
+function loadCardData(cardDataName) {
+    if (!cardDataName) {
         return null;
     }
 
     var map = loadCardDataMap();
-    if (map[cardDataName])
-    {
+    if (map[cardDataName]) {
         return map[cardDataName];
     }
 
@@ -396,14 +520,14 @@ function getBase64Image(img) {
     return dataURL;
 }
 
-function onload2promise(obj){
+function onload2promise(obj) {
     return new Promise((resolve, reject) => {
         obj.onload = () => resolve(obj);
         obj.onerror = reject;
     });
 }
 
-async function getBase64ImgFromUrl(imgUrl){
+async function getBase64ImgFromUrl(imgUrl) {
     let img = new Image();
     let imgpromise = onload2promise(img); // see comment of T S why you should do it this way.
     img.src = imgUrl;
@@ -412,11 +536,9 @@ async function getBase64ImgFromUrl(imgUrl){
     return imgData;
 }
 
-async function handleImageUrlFromDisk(imageUrl)
-{
+async function handleImageUrlFromDisk(imageUrl) {
     if (imageUrl &&
-        imageUrl.startsWith("blob:"))
-    {
+        imageUrl.startsWith("blob:")) {
         // The image was loaded from disk. So we can load it later, we need to stringify it.
         imageUrl = await getBase64ImgFromUrl(imageUrl);
     }
@@ -424,18 +546,15 @@ async function handleImageUrlFromDisk(imageUrl)
     return imageUrl;
 }
 
-async function saveCardData(cardData)
-{
-    var finishSaving = function()
-    {
+async function saveCardData(cardData) {
+    var finishSaving = function () {
         var map = loadCardDataMap();
         map[cardData.name] = cardData;
         window.localStorage.setItem("cardDataMap", JSON.stringify(map));
     };
 
     if (cardData != null &&
-        cardData.name)
-    {
+        cardData.name) {
         // handle images we may have loaded from disk...
         cardData.imageUrl = await handleImageUrlFromDisk(cardData.imageUrl);
 
@@ -444,12 +563,11 @@ async function saveCardData(cardData)
     }
 }
 
-function getLatestCardDataName()
-{
+function getLatestCardDataName() {
     return "latestCardData";
 }
 
-window.onload = function() {
+window.onload = function () {
     //window.localStorage.clear();
     var cardData = loadLatestCardData();
     writeControls(cardData);
@@ -457,57 +575,52 @@ window.onload = function() {
     refreshSaveSlots();
 }
 
-onAnyChange = function() {
+onAnyChange = function () {
     var cardData = readControls();
     render(cardData);
     saveLatestCardData();
 }
 
 
-addToImageRadioSelector = function(imageSrc, imageSelector, radioGroupName, bgColor)
-{
+addToImageRadioSelector = function (imageSrc, imageSelector, radioGroupName, bgColor) {
     var div = document.createElement('div');
     div.setAttribute('class', 'mr-0');
     div.innerHTML = `
-        <label for="${ radioGroupName }-${ imageSrc }"><img src="${ imageSrc }" width="50" height="50" alt="" style="background-color:${ bgColor };"></label>
-        <input type="radio" style="display:none;" name="${ radioGroupName }" id="${ radioGroupName }-${ imageSrc }" onchange="onRunemarkSelectionChanged(this, '${ bgColor }')">
+        <label for="${radioGroupName}-${imageSrc}"><img src="${imageSrc}" width="50" height="50" alt="" style="background-color:${bgColor};"></label>
+        <input type="radio" style="display:none;" name="${radioGroupName}" id="${radioGroupName}-${imageSrc}" onchange="onRunemarkSelectionChanged(this, '${bgColor}')">
     `;
     imageSelector.appendChild(div);
     return div;
 }
 
 
-function addToImageCheckboxSelector(imgSrc, grid, bgColor)
-{
+function addToImageCheckboxSelector(imgSrc, grid, bgColor) {
     var div = document.createElement('div');
     div.setAttribute('class', 'mr-0');
     div.innerHTML = `
-    <label for="checkbox-${ imgSrc }">
-        <img src="${ imgSrc }" width="50" height="50" alt="" style="background-color:${ bgColor };">
+    <label for="checkbox-${imgSrc}">
+        <img src="${imgSrc}" width="50" height="50" alt="" style="background-color:${bgColor};">
     </label>
-    <input type="checkbox" style="display:none;" id="checkbox-${ imgSrc }" onchange="onTagRunemarkSelectionChanged(this, '${ bgColor }')">
+    <input type="checkbox" style="display:none;" id="checkbox-${imgSrc}" onchange="onTagRunemarkSelectionChanged(this, '${bgColor}')">
     `;
     // grid.appendChild(div);
     return div;
 }
 
 
-function onClearCache()
-{
+function onClearCache() {
     window.localStorage.clear();
     location.reload();
     return false;
 }
 
-function onResetToDefault()
-{
+function onResetToDefault() {
     var cardData = defaultCardData();
     writeControls(cardData);
     render(cardData);
 }
 
-function refreshSaveSlots()
-{
+function refreshSaveSlots() {
     // Remove all
     $('select').children('option').remove();
 
@@ -518,8 +631,7 @@ function refreshSaveSlots()
     for (let [key, value] of Object.entries(map)) {
         var selected = false;
         if (cardDataName &&
-            key == cardDataName)
-        {
+            key == cardDataName) {
             selected = true;
         }
         var newOption = new Option(key, key, selected, selected);
@@ -527,16 +639,14 @@ function refreshSaveSlots()
     }
 }
 
-function onSaveClicked()
-{
+function onSaveClicked() {
     var cardData = readControls();
     console.log("Saving '" + cardData.name + "'...");
     saveCardData(cardData);
     refreshSaveSlots();
 }
 
-function onLoadClicked()
-{
+function onLoadClicked() {
     var cardDataName = $('#saveSlotsSelect').find(":selected").text();
     console.log("Loading '" + cardDataName + "'...");
     cardData = loadCardData(cardDataName);
@@ -545,8 +655,7 @@ function onLoadClicked()
     refreshSaveSlots();
 }
 
-function onDeleteClicked()
-{
+function onDeleteClicked() {
     var cardDataName = $('#saveSlotsSelect').find(":selected").text();
 
     console.log("Deleting '" + cardDataName + "'...");
@@ -573,10 +682,10 @@ function saveCardAsImage() {
     document.body.removeChild(element);
 }
 
-$(document).ready(function() {
-    var c=document.getElementById('canvas');
-    var ctx=c.getContext('2d');
+$(document).ready(function () {
+    var c = document.getElementById('canvas');
+    var ctx = c.getContext('2d');
     ctx.beginPath();
-    ctx.arc(95,50,40,0,2*Math.PI);
+    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
     // ctx.stroke();
 });
