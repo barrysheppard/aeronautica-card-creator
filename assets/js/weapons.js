@@ -358,7 +358,7 @@ function defaultCardData() {
 
     cardData.weaponName = 'Lord Flashheart';
     cardData.weaponTitle = 'Wing Commander';
-
+    fighterData.weapon1 = getDefaultWeaponData1();
     return cardData;
 }
 
