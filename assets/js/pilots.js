@@ -251,8 +251,18 @@ render = function (cardData) {
             overlayImage = document.getElementById('aeronautica_pilot_overlay');
             getContext().drawImage(
                 overlayImage, 0, 0, getCanvas().width, getCanvas().height);
+            drawPilotTitle(cardData.pilotTitle);
+            drawPilotName(cardData.pilotName);
+            drawPilotText(cardData.pilotText);
         };
         image.src = cardData.imageUrl;
+    } else {
+        overlayImage = document.getElementById('aeronautica_pilot_overlay');
+        getContext().drawImage(
+            overlayImage, 0, 0, getCanvas().width, getCanvas().height);
+        drawPilotTitle(cardData.pilotTitle);
+        drawPilotName(cardData.pilotName);
+        drawPilotText(cardData.pilotText);
     }
 
 
