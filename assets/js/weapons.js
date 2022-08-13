@@ -137,18 +137,6 @@ function getWeapon1() {
     return getWeapon("#weapon1");
 }
 
-function getWeapon2() {
-    return getWeapon("#weapon2");
-}
-
-function getWeapon3() {
-    return getWeapon("#weapon3");
-}
-
-function getWeapon4() {
-    return getWeapon("#weapon4");
-}
-
 // End Weapons
 
 
@@ -411,15 +399,6 @@ render = function (cardData) {
 
     if (fighterData.weapon1.enabled) {
         drawWeapon(fighterData.weapon1, { x: 100, y: 820 });
-    }
-    if (fighterData.weapon2.enabled) {
-        drawWeapon(fighterData.weapon2, { x: 100, y: 873 });
-    }
-    if (fighterData.weapon3.enabled) {
-        drawWeapon(fighterData.weapon3, { x: 100, y: 926 });
-    }
-    if (fighterData.weapon4.enabled) {
-        drawWeapon(fighterData.weapon4, { x: 100, y: 979 });
     }
 
 };
