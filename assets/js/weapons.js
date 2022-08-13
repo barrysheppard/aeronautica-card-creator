@@ -60,7 +60,7 @@ drawWeaponName = function (value) {
     getContext().font = '50px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 257, y: 30 });
+    writeScaled(value, { x: 257, y: 40 });
 }
 
 drawWeaponTitle = function (value) {
@@ -75,7 +75,7 @@ drawWeaponTitle = function (value) {
 
 drawWeaponFireArc = function (value) {
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 45, y: 350 });
+    writeScaled(value, { x: 50, y: 350 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -88,7 +88,7 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
     }
     writeScaled(
         fbr,
-        { x: 150, y: 350 });
+        { x: 180, y: 350 });
 }
 
 drawWeaponDamage = function (damage) {
@@ -321,11 +321,11 @@ render = function (cardData) {
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
 
-    drawWeaponFireArc(cardData.FireArc);
+    drawWeaponFireArc(cardData.fireArc);
     drawWeaponFBR(cardData.fbrShort, cardData.fbrMed, cardData.fbrLong);
-    drawWeaponDamage(cardData.Damage);
-    drawWeaponAmmo(cardData.Ammo);
-    drawWeaponSpecial(cardData.Special);
+    drawWeaponDamage(cardData.damage);
+    drawWeaponAmmo(cardData.ammo);
+    drawWeaponSpecial(cardData.special);
 
 };
 
