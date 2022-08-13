@@ -77,9 +77,6 @@ drawWeaponFireArc = function (value) {
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
-    writeScaled(
-        weaponData.fireArc,
-        { x: pixelPosition.x + 0, y: statsPosY });
 
     if (fbrShort == 0 && fbrMed == 0 && fbrLong == 0) {
         fbr = " ";
