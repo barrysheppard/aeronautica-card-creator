@@ -69,17 +69,6 @@ drawweaponName = function (value) {
     writeScaled(value, { x: 88, y: 153 });
 }
 
-drawweaponText = function (value) {
-    getContext().font = '9px helvetica';
-    getContext().fillStyle = 'black';
-    getContext().textAlign = 'left';
-
-    var lines = value.split('\n');
-    for (var i = 0; i < lines.length; i++) {
-        writeScaled(lines[i], { x: 20, y: 180 + (i * 10) });
-    }
-}
-
 
 // Weapon Stats
 
@@ -395,7 +384,6 @@ render = function (cardData) {
 
     drawweaponTitle(cardData.weaponTitle);
     drawweaponName(cardData.weaponName);
-    drawweaponText(cardData.weaponText);
 
     if (fighterData.weapon1.enabled) {
         drawWeapon(fighterData.weapon1, { x: 100, y: 820 });
