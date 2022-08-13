@@ -106,7 +106,10 @@ drawWeaponAmmo = function (value) {
 
 drawWeaponSpecial = function (value) {
     getContext().textAlign = 'left';
-    writeScaled(value, { x: 400, y: 340 });
+    var lines = value.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+        writeScaled(lines[i], { x: 400, y: 340 + (i * 10) });
+    }
 }
 
 
