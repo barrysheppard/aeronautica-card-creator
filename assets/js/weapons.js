@@ -265,13 +265,13 @@ function readControls() {
 
     data.weaponTitle = document.getElementById('weapon-title').value;
     data.weaponName = document.getElementById('weapon-name').value;
-    data.fireArc = document.getElementById("#fireArc").value;
-    data.fbrShort = document.getElementById("#fbrShort").value;
-    data.fbrMed = document.getElementById("#fbrMed").value;
-    data.fbrLong = document.getElementById("#fbrLong").value;
-    data.damage = document.getElementById("#damage").value;
-    data.ammo = document.getElementById("#ammo").value;
-    data.special = document.getElementById("#special").value;
+    data.fireArc = document.getElementById("fireArc").value;
+    data.fbrShort = document.getElementById("fbrShort").value;
+    data.fbrMed = document.getElementById("fbrMed").value;
+    data.fbrLong = document.getElementById("fbrLong").value;
+    data.damage = document.getElementById("damage").value;
+    data.ammo = document.getElementById("ammo").value;
+    data.special = document.getElementById("special").value;
     return data;
 }
 
