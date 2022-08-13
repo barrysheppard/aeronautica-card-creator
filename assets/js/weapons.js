@@ -55,25 +55,26 @@ drawCardElementFromInputId = function (inputId, pixelPosition) {
     drawCardElementFromInput(document.getElementById(inputId), pixelPosition);
 }
 
-drawWeaponTitle = function (value) {
-    getContext().font = '9px rodchenkoctt';
-    getContext().fillStyle = "#E0DDDC";
-    getContext().textAlign = 'left';
-    writeScaled(value, { x: 20, y: 40 });
-}
 
 drawWeaponName = function (value) {
-    getContext().font = '14px rodchenkoctt';
+    getContext().font = '30px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 20, y: 60 });
+    writeScaled(value, { x: 60, y: 20 });
+}
+
+drawWeaponTitle = function (value) {
+    getContext().font = '20px rodchenkoctt';
+    getContext().fillStyle = "#E0DDDC";
+    getContext().textAlign = 'centre';
+    writeScaled(value, { x: 60, y: 60 });
 }
 
 
 // Weapon Stats
 
 drawWeaponFireArc = function (value) {
-    writeScaled(value, { x: 20, y: 60 });
+    writeScaled(value, { x: 20, y: 200 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -86,7 +87,7 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
     }
     writeScaled(
         fbr,
-        { x: 10, y: 10 });
+        { x: 40, y: 200 });
 }
 
 drawWeaponDamage = function (damage) {
@@ -99,16 +100,16 @@ drawWeaponDamage = function (damage) {
     }
     writeScaled(
         dmg,
-        { x: 20, y: 10 });
+        { x: 60, y: 200 });
 
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 20, y: 60 });
+    writeScaled(value, { x: 80, y: 200 });
 }
 
 drawWeaponSpecial = function (value) {
-    writeScaled(value, { x: 20, y: 60 });
+    writeScaled(value, { x: 100, y: 200 });
 }
 
 
@@ -313,6 +314,12 @@ render = function (cardData) {
 
     drawWeaponTitle(cardData.weaponTitle);
     drawWeaponName(cardData.weaponName);
+
+    getContext().font = '40px helvetica bold';
+    getContext().fillStyle = "black";
+    getContext().textBaseline = "middle";
+    getContext().textAlign = "left";
+
     drawWeaponFireArc(cardData.FireArc);
     drawWeaponFBR(cardData.fbrShort, cardData.fbrMed, cardData.fbrLong);
     drawWeaponDamage(cardData.Damage);
