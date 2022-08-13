@@ -61,7 +61,7 @@ drawWeaponName = function (value) {
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
     getContext().textBaseline = "bottom";
-    writeScaled(value, { x: 257, y: 45 });
+    writeScaled(value, { x: 257, y: 50 });
 }
 
 drawWeaponTitle = function (value) {
@@ -77,7 +77,7 @@ drawWeaponTitle = function (value) {
 
 drawWeaponFireArc = function (value) {
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 60, y: 340 });
+    writeScaled(value, { x: 70, y: 340 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -101,14 +101,14 @@ drawWeaponDamage = function (damage) {
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 340, y: 340 });
+    writeScaled(value, { x: 340, y: 335 });
 }
 
 drawWeaponSpecial = function (value) {
     getContext().textAlign = 'left';
     var lines = value.split('\n');
     for (var i = 0; i < lines.length; i++) {
-        writeScaled(lines[i], { x: 400, y: 340 + (i * 10) });
+        writeScaled(lines[i], { x: 400, y: 340 + (i * 20) });
     }
 }
 
