@@ -101,7 +101,7 @@ drawWeaponDamage = function (damage) {
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 340, y: 340 });
+    writeScaled(value, { x: 335, y: 340 });
 }
 
 drawWeaponSpecial = function (value) {
