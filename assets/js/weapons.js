@@ -60,14 +60,14 @@ drawWeaponName = function (value) {
     getContext().font = '50px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 257, y: 40 });
+    writeScaled(value, { x: 257, y: 45 });
 }
 
 drawWeaponTitle = function (value) {
     getContext().font = '20px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 257, y: 60 });
+    writeScaled(value, { x: 257, y: 70 });
 }
 
 
@@ -310,7 +310,7 @@ render = function (cardData) {
     drawWeaponTitle(cardData.weaponTitle);
     drawWeaponName(cardData.weaponName);
 
-    getContext().font = '20px helvetica bold';
+    getContext().font = '25px helvetica bold';
     getContext().fillStyle = "black";
     getContext().textBaseline = "middle";
     getContext().textAlign = "left";
