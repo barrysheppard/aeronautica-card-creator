@@ -278,6 +278,21 @@ function readControls() {
     return data;
 }
 
+function writeControls(cardData) {
+    setName(cardData.name);
+    setModelImage(cardData.imageUrl);
+    setModelImageProperties(cardData.imageProperties);
+
+    $('#weapon-title').value = cardData.weaponTitle;
+    $('#weapon-name').value = cardData.weaponName;
+    $("#fireArc").value = cardData.fireArc;
+    $("#fbrShort").value = cardData.fbrShort;
+    $("#fbrMed").value = cardData.fbrMed;
+    $("#fbrLong").value = cardData.fbrLong;
+    $("#damage").value = cardData.damage;
+    $("#ammo").value = cardData.ammo;
+    $("#special").value = cardData.special;
+}
 
 
 render = function (cardData) {
@@ -301,29 +316,15 @@ render = function (cardData) {
 
     drawweaponTitle(cardData.weaponTitle);
     drawweaponName(cardData.weaponName);
-    drawweaponFireArc(cardData.weaponFireArc);
+    drawweaponFireArc(cardData.FireArc);
     drawweaponFBR(cardData.fbrShort, cardData.fbrMed, cardData.fbrLong);
-    drawweaponDamage(cardData.weaponDamage);
-    drawweaponAmmo(cardData.weaponAmmo);
-    drawweaponSpecial(cardData.weaponSpecial);
+    drawweaponDamage(cardData.Damage);
+    drawweaponAmmo(cardData.Ammo);
+    drawweaponSpecial(cardData.Special);
 
 };
 
-function writeControls(cardData) {
-    setName(cardData.name);
-    setModelImage(cardData.imageUrl);
-    setModelImageProperties(cardData.imageProperties);
 
-    $('#weapon-title').value = cardData.weaponTitle;
-    $('#weapon-name').value = cardData.weaponName;
-    $("#fireArc").value = cardData.fireArc;
-    $("#fbrShort").value = cardData.fbrShort;
-    $("#fbrMed").value = cardData.fbrMed;
-    $("#fbrLong").value = cardData.fbrLong;
-    $("#damage").value = cardData.damage;
-    $("#ammo").value = cardData.ammo;
-    $("#special").value = cardData.special;
-}
 
 function defaultCardData() {
     var cardData = new Object;
