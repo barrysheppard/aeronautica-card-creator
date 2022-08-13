@@ -246,13 +246,6 @@ function setModelImageProperties(modelImageProperties) {
 }
 
 
-// begin weapons
-
-
-
-
-
-// end weapons
 
 
 function readControls() {
@@ -333,8 +326,8 @@ function defaultCardData() {
     cardData.imageUrl = null;
     cardData.imageProperties = getDefaultModelImageProperties();
 
-    cardData.weaponName = 'Lord Flashheart';
-    cardData.weaponTitle = 'Wing Commander';
+    cardData.weaponName = 'Weapon Name';
+    cardData.weaponTitle = 'Weapon Title';
     cardData.fireArc = "Front";
     cardData.fbrShort = 1;
     cardData.fbrMed = 2;
