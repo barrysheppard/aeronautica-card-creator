@@ -55,14 +55,14 @@ drawCardElementFromInputId = function (inputId, pixelPosition) {
     drawCardElementFromInput(document.getElementById(inputId), pixelPosition);
 }
 
-drawweaponTitle = function (value) {
+drawWeaponTitle = function (value) {
     getContext().font = '9px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'left';
     writeScaled(value, { x: 20, y: 40 });
 }
 
-drawweaponName = function (value) {
+drawWeaponName = function (value) {
     getContext().font = '14px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
@@ -314,13 +314,13 @@ render = function (cardData) {
         image.src = cardData.imageUrl;
     }
 
-    drawweaponTitle(cardData.weaponTitle);
-    drawweaponName(cardData.weaponName);
-    drawweaponFireArc(cardData.FireArc);
-    drawweaponFBR(cardData.fbrShort, cardData.fbrMed, cardData.fbrLong);
-    drawweaponDamage(cardData.Damage);
-    drawweaponAmmo(cardData.Ammo);
-    drawweaponSpecial(cardData.Special);
+    drawWeaponTitle(cardData.weaponTitle);
+    drawWeaponName(cardData.weaponName);
+    drawWeaponFireArc(cardData.FireArc);
+    drawWeaponFBR(cardData.fbrShort, cardData.fbrMed, cardData.fbrLong);
+    drawWeaponDamage(cardData.Damage);
+    drawWeaponAmmo(cardData.Ammo);
+    drawWeaponSpecial(cardData.Special);
 
 };
 
