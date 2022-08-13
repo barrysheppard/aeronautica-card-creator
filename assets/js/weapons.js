@@ -75,7 +75,7 @@ drawWeaponTitle = function (value) {
 
 drawWeaponFireArc = function (value) {
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 50, y: 350 });
+    writeScaled(value, { x: 60, y: 330 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -88,23 +88,23 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
     }
     writeScaled(
         fbr,
-        { x: 180, y: 350 });
+        { x: 185, y: 330 });
 }
 
 drawWeaponDamage = function (damage) {
     // value shows dice roll, e.g. 5+ so the + gets added
     writeScaled(
         damage + "+",
-        { x: 240, y: 350 });
+        { x: 260, y: 330 });
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 300, y: 350 });
+    writeScaled(value, { x: 350, y: 330 });
 }
 
 drawWeaponSpecial = function (value) {
     getContext().textAlign = 'left';
-    writeScaled(value, { x: 400, y: 350 });
+    writeScaled(value, { x: 400, y: 330 });
 }
 
 
@@ -312,7 +312,7 @@ render = function (cardData) {
 
     getContext().font = '25px helvetica bold';
     getContext().fillStyle = "black";
-    getContext().textBaseline = "middle";
+    getContext().textBaseline = "bottom";
     getContext().textAlign = "left";
 
     drawWeaponFireArc(cardData.fireArc);
