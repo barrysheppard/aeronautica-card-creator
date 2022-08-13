@@ -60,6 +60,7 @@ drawWeaponName = function (value) {
     getContext().font = '50px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
+    getContext().textBaseline = "bottom";
     writeScaled(value, { x: 257, y: 45 });
 }
 
@@ -67,6 +68,7 @@ drawWeaponTitle = function (value) {
     getContext().font = '20px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
+    getContext().textBaseline = "bottom";
     writeScaled(value, { x: 257, y: 70 });
 }
 
@@ -75,7 +77,7 @@ drawWeaponTitle = function (value) {
 
 drawWeaponFireArc = function (value) {
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 60, y: 330 });
+    writeScaled(value, { x: 60, y: 340 });
 }
 
 drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
@@ -88,23 +90,23 @@ drawWeaponFBR = function (fbrShort, fbrMed, fbrLong) {
     }
     writeScaled(
         fbr,
-        { x: 185, y: 330 });
+        { x: 185, y: 340 });
 }
 
 drawWeaponDamage = function (damage) {
     // value shows dice roll, e.g. 5+ so the + gets added
     writeScaled(
         damage + "+",
-        { x: 260, y: 330 });
+        { x: 260, y: 340 });
 }
 
 drawWeaponAmmo = function (value) {
-    writeScaled(value, { x: 350, y: 330 });
+    writeScaled(value, { x: 340, y: 340 });
 }
 
 drawWeaponSpecial = function (value) {
     getContext().textAlign = 'left';
-    writeScaled(value, { x: 400, y: 330 });
+    writeScaled(value, { x: 400, y: 340 });
 }
 
 
