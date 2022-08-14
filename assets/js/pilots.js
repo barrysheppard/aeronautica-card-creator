@@ -59,7 +59,7 @@ drawPilotTitle = function (value) {
     getContext().font = '9px rodchenkoctt';
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
-    writeScaled(value, { x: 30, y: 153 });
+    writeScaled(value, { x: 20, y: 153 });
 }
 
 drawPilotName = function (value) {

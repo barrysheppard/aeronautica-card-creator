@@ -61,7 +61,7 @@ drawWeaponName = function (value) {
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
     getContext().textBaseline = "bottom";
-    writeScaled(value, { x: 257, y: 55 });
+    writeScaled(value, { x: 257, y: 60 });
 }
 
 drawWeaponTitle = function (value) {
@@ -69,7 +69,7 @@ drawWeaponTitle = function (value) {
     getContext().fillStyle = "#E0DDDC";
     getContext().textAlign = 'center';
     getContext().textBaseline = "bottom";
-    writeScaled(value, { x: 257, y: 70 });
+    writeScaled(value, { x: 257, y: 75 });
 }
 
 
