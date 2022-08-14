@@ -360,14 +360,14 @@ function loadCardDataMap() {
 }
 
 function loadLatestCardData() {
-    var latestFighterName = window.localStorage.getItem("latestFighterName");
-    if (latestFighterName == null) {
-        latestFighterName = "Default";
+    var WeaponName = window.localStorage.getItem("WeaponName");
+    if (WeaponName == null) {
+        WeaponName = "Default";
     }
 
-    console.log("Loading '" + latestFighterName + "'...");
+    console.log("Loading '" + WeaponName + "'...");
 
-    var data = loadCardData(latestFighterName);
+    var data = loadCardData(WeaponName);
 
     if (data) {
         console.log("Loaded data:");
@@ -386,7 +386,7 @@ function saveLatestCardData() {
         return;
     }
 
-    window.localStorage.setItem("latestFighterName", cardData.name);
+    window.localStorage.setItem("WeaponName", cardData.name);
     saveCardData(cardData);
 }
 

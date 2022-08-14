@@ -313,14 +313,14 @@ function loadCardDataMap() {
 }
 
 function loadLatestCardData() {
-    var latestFighterName = window.localStorage.getItem("latestFighterName");
-    if (latestFighterName == null) {
-        latestFighterName = "Default";
+    var latestPilotName = window.localStorage.getItem("latestPilotName");
+    if (latestPilotName == null) {
+        latestPilotName = "Default";
     }
 
-    console.log("Loading '" + latestFighterName + "'...");
+    console.log("Loading '" + latestPilotName + "'...");
 
-    var data = loadCardData(latestFighterName);
+    var data = loadCardData(latestPilotName);
 
     if (data) {
         console.log("Loaded data:");
@@ -339,7 +339,7 @@ function saveLatestCardData() {
         return;
     }
 
-    window.localStorage.setItem("latestFighterName", cardData.name);
+    window.localStorage.setItem("latestPilotName", cardData.name);
     saveCardData(cardData);
 }
 
