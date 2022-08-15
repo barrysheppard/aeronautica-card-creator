@@ -24,11 +24,40 @@ getContext = function () {
 }
 
 getBackgroundImage = function () {
-    if (document.getElementById('select_aeronautica_pilot_green').checked) {
-        return document.getElementById('aeronautica_pilot_green');
-    }
-
+    return document.getElementById('aeronautica_pilot_bg');
 }
+
+getOverlayImage = function () {
+    if (document.getElementById('select_aeronautica_pilot_overlay_beige').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_beige');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_blue').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_blue');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_brown').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_brown');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_cyan').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_cyan');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_green').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_green');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_imperial').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_imperial');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_pink').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_pink');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_purple').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_purple');
+    }
+    if (document.getElementById('select_aeronautica_pilot_overlay_red').checked) {
+        return document.getElementById('aeronautica_pilot_overlay_red');
+    }
+}
+
+
 
 drawBackground = function () {
     getContext().drawImage(
@@ -248,7 +277,7 @@ render = function (cardData) {
             // These are the texts to overlay
 
             URL.revokeObjectURL(image.src);
-            overlayImage = document.getElementById('aeronautica_pilot_overlay');
+            overlayImage = getOverlayImage();
             getContext().drawImage(
                 overlayImage, 0, 0, getCanvas().width, getCanvas().height);
             //getContext().rotate(10 * Math.PI / 180);
@@ -259,7 +288,7 @@ render = function (cardData) {
         };
         image.src = cardData.imageUrl;
     } else {
-        overlayImage = document.getElementById('aeronautica_pilot_overlay');
+        overlayImage = getOverlayImage();
         getContext().drawImage(
             overlayImage, 0, 0, getCanvas().width, getCanvas().height);
         //getContext().rotate(10 * Math.PI / 180);
