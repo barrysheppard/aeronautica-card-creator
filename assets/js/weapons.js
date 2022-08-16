@@ -27,6 +27,30 @@ getBackgroundImage = function () {
     if (document.getElementById('select_aeronautica_weapon_imperial').checked) {
         return document.getElementById('aeronautica_weapon_imperial');
     }
+    if (document.getElementById('select_aeronautica_weapon_beige').checked) {
+        return document.getElementById('aeronautica_weapon_beige');
+    }
+    if (document.getElementById('select_aeronautica_weapon_blue').checked) {
+        return document.getElementById('aeronautica_weapon_blue');
+    }
+    if (document.getElementById('select_aeronautica_weapon_brown').checked) {
+        return document.getElementById('aeronautica_weapon_brown');
+    }
+    if (document.getElementById('select_aeronautica_weapon_cyan').checked) {
+        return document.getElementById('aeronautica_weapon_cyan');
+    }
+    if (document.getElementById('select_aeronautica_weapon_green').checked) {
+        return document.getElementById('aeronautica_weapon_green');
+    }
+    if (document.getElementById('select_aeronautica_weapon_pink').checked) {
+        return document.getElementById('aeronautica_weapon_pink');
+    }
+    if (document.getElementById('select_aeronautica_weapon_purple').checked) {
+        return document.getElementById('aeronautica_weapon_purple');
+    }
+    if (document.getElementById('select_aeronautica_weapon_red').checked) {
+        return document.getElementById('aeronautica_weapon_red');
+    }
 
 }
 
